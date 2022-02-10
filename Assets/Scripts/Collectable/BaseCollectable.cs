@@ -14,9 +14,6 @@ public class BaseCollectable : MonoBehaviour, ICollectable
     }
     public void Collect()
     {
-
- 
-        StackController.instance.StackObjectsList.Add(this);
         StackController.instance.StackObjectMethod(this);
     }
 
