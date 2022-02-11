@@ -11,10 +11,28 @@ public class BaseCollectable : MonoBehaviour, ICollectable
         if(other.tag =="Player"){
             Collect();
         }
+
+        if (other.tag=="Platform")
+        {
+          
+           
+        }
     }
-    public void Collect()
+
+    void OnCollisionEnter(Collision collision)
     {
-        StackController.instance.StackObjectMethod(this);
+        if (collision.gameObject.tag=="Platform")
+        {
+              gameObject.GetComponent<BoxCollider>().isTrigger=true;
+            Rigidbody rigidbody = GetComponent<Rigidbody>();
+            Destroy(rigidbody);
+        }
     }
+    public virtual void Collect()
+    {
+        
+    }
+
+
 
 }
