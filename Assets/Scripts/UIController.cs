@@ -34,7 +34,7 @@ public class UIController : MonoBehaviour
 	/// <summary>
 	/// Level numarasini ui kisminda degistirmek icin fonksiyon. Parametre olarak level numarasi aliyor.
 	/// </summary>
-	/// <param name="levelNo">UI ekranina yazilmak istenen Level numarasý</param>
+	/// <param name="levelNo">UI ekranina yazilmak istenen Level numarasï¿½</param>
 	public void SetLevelText(int levelNo)
 	{
 		levelNoText.text = "Level " + levelNo.ToString();
@@ -50,7 +50,8 @@ public class UIController : MonoBehaviour
 		GamePanel.SetActive(true);
 		SetLevelText(LevelController.instance.totalLevelNo);
 		SetGamePlayScoreText();
-
+		//
+		PlayerController.instance.WalkAnim();
 	}
 
 	// RESTART TUSUNA BASILDISINDA  --- LOOSE EKRANINDA
@@ -94,7 +95,7 @@ public class UIController : MonoBehaviour
 	}
 
 	/// <summary>
-	/// Bu fonksiyon winscreen de geçerli level scoreunun yazildigi texti gunceller.
+	/// Bu fonksiyon winscreen de geï¿½erli level scoreunun yazildigi texti gunceller.
 	/// </summary>
 	public void WinScreenScore()
 	{
@@ -169,7 +170,7 @@ public class UIController : MonoBehaviour
 			yield return new WaitForSeconds(.025f);
 			if(adet %3 == 0)
 			{
-				Debug.Log("çalýþtýýýý");
+				Debug.Log("ï¿½alï¿½ï¿½tï¿½ï¿½ï¿½ï¿½");
 				GameObject coin = Instantiate(winScreenEffectObject, startScreenCoinImage.transform.position, Quaternion.identity,TapToStartPanel.transform);
 				coin.GetComponent<Image>().sprite = winScreenCoinImage.GetComponent<Image>().sprite;
 				coin.transform.rotation = startScreenCoinImage.transform.rotation;
@@ -225,6 +226,8 @@ public class UIController : MonoBehaviour
 		LoosePanel.SetActive(false);
 		GamePanel.SetActive(false);
 		tapToStartScoreText.text = PlayerPrefs.GetInt("total").ToString();
+		
+		
 	}
 
 	

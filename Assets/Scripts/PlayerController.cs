@@ -11,11 +11,12 @@ public class PlayerController : MonoBehaviour
     public bool xVarMi = true;
     public bool collectibleVarMi = true;
 
-
+    private Animator animator;
     private void Awake()
     {
         if (instance == null) instance = this;
         //else Destroy(this);
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Start()
@@ -83,5 +84,15 @@ public class PlayerController : MonoBehaviour
         GetComponent<Collider>().enabled = true;
 
     }
+
+
+    public void IdleAnim(){
+        animator.SetTrigger("idle");
+    }
+
+    public void WalkAnim(){
+        animator.SetTrigger("walk");
+    }
+
 
 }

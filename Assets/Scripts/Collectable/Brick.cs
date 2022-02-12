@@ -7,7 +7,7 @@ public class Brick : BaseCollectable
 {
   public  override void Collect(){
       StackController.instance.StackObjectMethod(this);
-      BrickController.instance.PlaceObjectAddMethod(this);
+      ThrowController.instance.PlaceObjectAddMethod(this);
    }
 
    

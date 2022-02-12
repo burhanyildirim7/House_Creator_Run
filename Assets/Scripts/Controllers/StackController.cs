@@ -25,15 +25,18 @@ public class StackController : MonoBehaviour
         if (other.tag == "engel" && !triggerCheck)
         {
 
+
+
             if (stackObjectsList.Count > 0)
-                DropObjectMethod(stackObjectsList[stackObjectsList.Count - 1]);
+                DropObjectMethod(stackObjectsList[stackObjectsList.Count - 1],other);
+
             triggerCheck = true;
         }
 
         if (other.tag == "finish")
         {
             stackObjectsList.Clear();
-           
+
         }
 
 
@@ -86,39 +89,52 @@ public class StackController : MonoBehaviour
     }
 
 
-    public void DropObjectMethod(BaseCollectable baseObject)
+    public void DropObjectMethod(BaseCollectable baseObject, Collider other)
     {
         baseObject.gameObject.AddComponent<Rigidbody>().useGravity = true;
 
         baseObject.gameObject.GetComponent<BoxCollider>().isTrigger = false;
-/*         baseObject.transform.DOMove(new Vector3(transform.position.x,transform.position.y+5,transform.position.z+5), 0.5f).OnComplete(()=>{
 
-        }); */
 
-        
-        baseObject.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(CheckPlayerPos(),7,7)*50f); 
+
+        baseObject.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(CheckObstacleHitPos(other), 7, 7) * 50f);
 
         baseObject.transform.parent = null;
 
         stackObjectsList.Remove(baseObject);
-        BrickController.instance.PlaceObjectRemoveMethod(baseObject);
+        ThrowController.instance.PlaceObjectRemoveMethod(baseObject);
     }
 
-    private float CheckPlayerPos()
+
+    private float CheckObstacleHitPos(Collider other)
     {
+        RaycastHit hit;
+        Vector3 localHit;
+        float direction=1.5f;
         float left = -1.5f;
         float right = 1.5f;
-        float direction = 0;
-        if (transform.position.x < 0)
-            direction = left;
-        else if (transform.position.x > 0)
-            direction = right;
-        else
+        if (Physics.Raycast(transform.position, transform.forward, out hit))
         {
-            direction = right;
-        }
-        return direction;
-    }
+            localHit = other.transform.InverseTransformPoint(hit.point);
+            Debug.Log(localHit);
+            
+            if (localHit.x < 0)
+                direction = left;
+            else if (localHit.x > 0)
+                direction = right;
+            else
+            {
+                direction = right;
+            }
+            return direction;
 
+
+        }else{
+              return direction;
+        }
+
+
+
+    }
 
 }
