@@ -747,6 +747,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1803071302, guid: ea08a80377e03964183787dc256f6dd1, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 963194227}
     - target: {fileID: 3372183234270918047, guid: ea08a80377e03964183787dc256f6dd1, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -757,7 +761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3372183234270918047, guid: ea08a80377e03964183787dc256f6dd1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3372183234270918047, guid: ea08a80377e03964183787dc256f6dd1, type: 3}
       propertyPath: m_LocalPosition.z

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.UI;
@@ -56,7 +57,13 @@ public class PlayerController : MonoBehaviour
         {
             // finishe collider eklenecek levellerde...
             // FINISH NOKTASINA GELINCE YAPILACAKLAR... Totalscore artırma, x işlemleri, efektler v.s. v.s.
+            //
             GameController.instance.isContinue = false;
+            transform.DOMove(new Vector3(0, transform.position.y, transform.position.z),0.5f).OnComplete(()=>{
+                IdleAnim();
+            });
+
+            //
             GameController.instance.ScoreCarp(3);  // Bu fonksiyon normalde x ler hesaplandıktan sonra çağrılacak. Parametre olarak x i alıyor. 
             // x değerine göre oyuncunun total scoreunu hesaplıyor.. x li olmayan oyunlarda parametre olarak 1 gönderilecek.
             // UIController.instance.ActivateWinScreen(); 

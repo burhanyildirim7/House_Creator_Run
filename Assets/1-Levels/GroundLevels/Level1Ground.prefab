@@ -786,7 +786,7 @@ GameObject:
   m_Component:
   - component: {fileID: 573374979487807990}
   m_Layer: 0
-  m_Name: PrototipIcinBosLevelCalismam
+  m_Name: Level1Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
