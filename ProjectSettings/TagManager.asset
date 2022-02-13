@@ -16,7 +16,6 @@ TagManager:
   - ENGEL
   - Collectable
   - Platform
-  - Place
   layers:
   - Default
   - TransparentFX

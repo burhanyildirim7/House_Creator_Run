@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 1635996903465165415}
   - component: {fileID: -8992101047820592633}
   m_Layer: 0
-  m_Name: Brick
-  m_TagString: Collectable
+  m_Name: CollectableGround
+  m_TagString: CollectableGround
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ea21bb7a260113746835153831881057, type: 2}
+  - {fileID: 2100000, guid: 04cf0457552238e4ea7c64e108c733bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

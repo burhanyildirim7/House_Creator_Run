@@ -12,11 +12,6 @@ public class BaseCollectable : MonoBehaviour, ICollectable
             Collect();
         }
 
-        if (other.tag=="Platform")
-        {
-          
-           
-        }
     }
 
     void OnCollisionEnter(Collision collision)
