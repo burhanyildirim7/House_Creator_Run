@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -66,7 +67,11 @@ public class PlayerController : MonoBehaviour
             //
             GameController.instance.ScoreCarp(3);  // Bu fonksiyon normalde x ler hesaplandıktan sonra çağrılacak. Parametre olarak x i alıyor. 
             // x değerine göre oyuncunun total scoreunu hesaplıyor.. x li olmayan oyunlarda parametre olarak 1 gönderilecek.
-            // UIController.instance.ActivateWinScreen(); 
+
+            //
+            StartCoroutine(ActiveWinScreen()); //////////////////
+
+            //
             
             // finish noktasına gelebildiyse her türlü win screen aktif edilecek.. ama burada değil..
             // normal de bu kodu x ler hesaplandıktan sonra çağıracağız. Ve bu kod çağrıldığında da kazanılan puanlar animasyonlu şekilde artacak..
@@ -75,6 +80,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
 
 
     /// <summary>
@@ -99,6 +105,13 @@ public class PlayerController : MonoBehaviour
 
     public void WalkAnim(){
         animator.SetTrigger("walk");
+    }
+
+
+    private IEnumerator ActiveWinScreen()
+    {
+        yield return new WaitForSeconds(3);
+        UIController.instance.ActivateWinScreen();
     }
 
 

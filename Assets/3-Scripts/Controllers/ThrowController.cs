@@ -47,10 +47,17 @@ public class ThrowController : MonoBehaviour
         for (int i = throwObjectList.Count-1; i >=0 ; i--)
         {
              yield return new WaitForSeconds(0.1f);
-            throwObjectList[i].transform.DOMoveY(wayPoint3.position.y, 0.5f); 
+             if(throwObjectList[i].tag=="CollectableGround"){
+                 throwObjectList[i].transform.DOMove(Ground.instance.transform.position, 0.5f);                   
+             }else if(throwObjectList[i].tag=="CollectableWall"){
+                 throwObjectList[i].transform.DOMove(Wall.instance.transform.position, 0.5f);
+             }else if(throwObjectList[i].tag=="CollectableRoof"){
+                 throwObjectList[i].transform.DOMove(Roof.instance.transform.position, 0.5f);
+             }
+             
         }
 
-
+        throwObjectList.Clear();
 
     }
 

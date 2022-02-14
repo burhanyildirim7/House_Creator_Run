@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using System;
 
 public class Ground : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class Ground : MonoBehaviour
 
     [SerializeField] private Text countText;
 
-    private int groundCount;
+    public int groundCount;
+    public int groundCountLimit;
+
 
 
     private void Awake()
@@ -20,26 +23,39 @@ public class Ground : MonoBehaviour
 
     }
 
-    private void Update() {
-        countText.text = groundCount+"/100";
+    private void Update()
+    {
+        countText.text = groundCount + "/" + groundCountLimit;
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag=="CollectableGround"){
-            
+        if (other.tag == "CollectableGround")
+        {
             GameObject gameObject = other.gameObject;
-            
-            Destroy(gameObject,1f);
-           groundCount++;
-           if(groundCount==100){
-               GetComponent<MeshRenderer>().material.color = new Color(1,1,1,1f);
-           }
+            Destroy(gameObject, 0.2f);
+            // DOTween.Kill(gameObject);
+            if (groundCount == groundCountLimit)
+            {
+                DOTween.Pause(gameObject);
+                Wall.instance.wallCount++;
+
+                return;
+            }
+
+
+            groundCount++;
+            if (groundCount == groundCountLimit)
+            {
+                GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
+                groundCount = groundCountLimit;
+                House.instance.OpenWall();
+            }
         }
 
     }
 
 
-   
+
 
 }

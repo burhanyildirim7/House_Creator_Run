@@ -17,6 +17,8 @@ TagManager:
   - Collectable
   - Platform
   - CollectableGround
+  - CollectableWall
+  - CollectableRoof
   layers:
   - Default
   - TransparentFX

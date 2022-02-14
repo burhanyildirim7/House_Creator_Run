@@ -116,7 +116,7 @@ public class StackController : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.forward, out hit))
         {
             localHit = other.transform.InverseTransformPoint(hit.point);
-            Debug.Log(localHit);
+            // Debug.Log(localHit);
             
             if (localHit.x < 0)
                 direction = left;
