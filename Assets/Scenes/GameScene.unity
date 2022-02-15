@@ -209,10 +209,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: House1
       objectReference: {fileID: 0}
-    - target: {fileID: 5286578262245800959, guid: 6296c078380b0f94b8377f7436fb742a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 200
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6296c078380b0f94b8377f7436fb742a, type: 3}
 --- !u!1 &326513068

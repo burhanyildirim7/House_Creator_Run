@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         UIController.instance.ActivateWinScreen();
-    
+       GameController.instance.DestroyAllObject();
     }
 
 

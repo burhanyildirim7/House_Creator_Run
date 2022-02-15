@@ -34,10 +34,7 @@ public class House : MonoBehaviour
         if (other.tag == "Collectable")
         {
 
-            GameObject gameObject = other.gameObject;
-            Destroy(gameObject, 0.2f);
-            ThrowController.instance.throwObjectList.Remove(gameObject.transform.GetComponent<BaseCollectable>());
-            DOTween.Kill(gameObject);
+
             if (groundCount != groundCountLimit)
             {
                 groundCount++;
@@ -58,34 +55,48 @@ public class House : MonoBehaviour
 
 
             CheckObjects();
-
+            StartCoroutine(DestroyObjects(other));
 
         }
+    }
+
+    private IEnumerator DestroyObjects(Collider other)
+    {
+        yield return new WaitForSeconds(0.5f);
+        
+        if (gameObject != null)
+        {
+            GameObject gameObject = other.gameObject;
+            Destroy(gameObject);
+            ThrowController.instance.throwObjectList.Remove(gameObject.transform.GetComponent<BaseCollectable>());
+            DOTween.Kill(gameObject);
+        }
+
     }
 
     private void CheckObjects()
     {
 
-        if (groundCount == groundCountLimit)
+        if (groundCount == groundCountLimit && groundCount != 0)
         {
             ground.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
 
             OpenWall();
         }
-        if (wallCount == wallCountLimit)
+        if (wallCount == wallCountLimit && wallCount != 0)
         {
             wall.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
 
             OpenRoof();
         }
-        if (roofCount == roofCountLimit)
+        if (roofCount == roofCountLimit && roofCount != 0)
         {
             roof.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
-        
+
             FinishHouse();
-            DestroyAllObject();
             
-       
+
+
 
         }
     }
@@ -106,18 +117,8 @@ public class House : MonoBehaviour
     public void FinishHouse()
     {
         transform.DORotate(new Vector3(0, 360, 0), 5, RotateMode.FastBeyond360);
-        
-    }
-    public void DestroyAllObject()
-    {
 
-        foreach (var item in GameObject.FindGameObjectsWithTag("Collectable"))
-        {
-            GameObject gameObject = item.gameObject;
-            Destroy(gameObject);
-            
-        }
-       
     }
+   
 
 }
