@@ -7,7 +7,7 @@ using System;
 
 public class Wall : MonoBehaviour
 {
-     public static Wall instance;
+    public static Wall instance;
 
     [SerializeField] private Text countText;
 
@@ -21,30 +21,46 @@ public class Wall : MonoBehaviour
 
     }
 
-    private void Update() {
-        countText.text = wallCount+"/"+wallCountLimit;
+    private void Update()
+    {
+        countText.text = wallCount + "/" + wallCountLimit;
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag=="CollectableWall"){
-            
+        if (other.tag == "Collectable")
+        {
+
             GameObject gameObject = other.gameObject;
-            
-            Destroy(gameObject,0.2f);
+            Destroy(gameObject, 0.2f);
+            ThrowController.instance.throwObjectList.Remove(gameObject.transform.GetComponent<BaseCollectable>());
+
             DOTween.Kill(gameObject);
-           if(wallCount==wallCountLimit){
+
+            if (wallCount == wallCountLimit)
+            {
+                
                 Roof.instance.roofCount++;
-                return; 
-           }
-            
-           wallCount++;
-           if(wallCount==wallCountLimit){
-               GetComponent<MeshRenderer>().material.color = new Color(1,1,1,1);
-               wallCount=wallCountLimit;
-               House.instance.OpenRoof();
-           }
+                return;
+            }
+
+            wallCount++;
+            if (wallCount == wallCountLimit)
+            {
+                GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
+                wallCount = wallCountLimit;
+                StartCoroutine(OpenRoof());
+                GetComponent<BoxCollider>().enabled = false;
+            }
         }
 
     }
+
+    private IEnumerator OpenRoof()
+    {
+        yield return new WaitForSeconds(0.3f);
+        House.instance.OpenRoof();
+    }
+
+ 
 }

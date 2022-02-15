@@ -1,3 +1,4 @@
+using System.Threading;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -110,8 +111,9 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator ActiveWinScreen()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         UIController.instance.ActivateWinScreen();
+    
     }
 
 

@@ -36,13 +36,16 @@ public class StackController : MonoBehaviour
         if (other.tag == "finish")
         {
             stackObjectsList.Clear();
-
+         
         }
 
 
     }
 
-
+  
+    
+      
+    
 
     void OnTriggerExit(Collider other)
     {

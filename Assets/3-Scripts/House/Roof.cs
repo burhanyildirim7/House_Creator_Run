@@ -20,27 +20,36 @@ public class Roof : MonoBehaviour
 
     }
 
-    private void Update() {
-        countText.text = roofCount+"/"+roofCountLimit;
+    private void Update()
+    {
+        countText.text = roofCount + "/" + roofCountLimit;
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag=="CollectableRoof"){
-            
+        if (other.tag == "Collectable")
+        {
+
             GameObject gameObject = other.gameObject;
-            
-            Destroy(gameObject,0.2f);
+            Destroy(gameObject, 0.2f);
+            ThrowController.instance.throwObjectList.Remove(gameObject.transform.GetComponent<BaseCollectable>());
+
             DOTween.Kill(gameObject);
-           if(roofCount==roofCountLimit)
-            return; 
-           roofCount++;
-           if(roofCount==roofCountLimit){
-               GetComponent<MeshRenderer>().material.color = new Color(1,1,1,1);
-               roofCount=roofCountLimit;
+            if (roofCount == roofCountLimit)
+            {
+                return;
+
+            }
+            roofCount++;
+            if (roofCount == roofCountLimit)
+            {
+                GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
+                roofCount = roofCountLimit;
                 House.instance.FinishHouse();
-           }
+                GetComponent<BoxCollider>().enabled = false;
+            }
         }
 
     }
+
 }

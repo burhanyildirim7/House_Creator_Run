@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6226378878161403481}
   m_Layer: 0
   m_Name: CollectableRoof
-  m_TagString: CollectableRoof
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

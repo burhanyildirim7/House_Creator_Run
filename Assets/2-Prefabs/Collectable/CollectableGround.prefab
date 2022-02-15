@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8992101047820592633}
   m_Layer: 0
   m_Name: CollectableGround
-  m_TagString: CollectableGround
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

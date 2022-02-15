@@ -30,14 +30,15 @@ public class Ground : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "CollectableGround")
+        if (other.tag == "Collectable")
         {
             GameObject gameObject = other.gameObject;
             Destroy(gameObject, 0.2f);
-            // DOTween.Kill(gameObject);
+            ThrowController.instance.throwObjectList.Remove(gameObject.transform.GetComponent<BaseCollectable>());
+            DOTween.Kill(gameObject);
             if (groundCount == groundCountLimit)
             {
-                DOTween.Pause(gameObject);
+               
                 Wall.instance.wallCount++;
 
                 return;
@@ -49,12 +50,20 @@ public class Ground : MonoBehaviour
             {
                 GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
                 groundCount = groundCountLimit;
-                House.instance.OpenWall();
+                StartCoroutine(OpenWall());
+                
+                GetComponent<BoxCollider>().enabled=false;
             }
         }
 
     }
 
+    private IEnumerator OpenWall()
+    {
+        yield return new WaitForSeconds(0.3f);
+       /*  House.instance.OpenWall(); */
+
+    }
 
 
 
