@@ -18,6 +18,7 @@ public class LevelController : MonoBehaviour
 
 	private void Start()
 	{
+		GameController.instance.DestroyAllObject();
 		PlayerPrefs.DeleteAll();
 		totalLevelNo = PlayerPrefs.GetInt("level");
 		if (totalLevelNo == 0)

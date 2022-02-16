@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
                 // FAİL EVENTLERİ BURAYA YAZILACAK..
                 GameController.instance.isContinue = false; // çarptığı anda oyuncunun yerinde durması ilerlememesi için
                 UIController.instance.ActivateLooseScreen(); // Bu fonksiyon direk çağrılada bilir veya herhangi bir effect veya animasyon bitiminde de çağrılabilir..
-
+                IdleAnim();
                                                              // oyuncu fail durumunda bu fonksiyon çağrılacak.. 
             }
 
@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
         GameController.instance.score = 0;
         transform.position = new Vector3(0, transform.position.y, 0);
         GetComponent<Collider>().enabled = true;
-
+        
     }
 
 
