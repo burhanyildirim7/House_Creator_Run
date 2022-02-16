@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         {
             // COLLECTIBLE CARPINCA YAPILACAKLAR...
             // GameController.instance.SetScore(collectibleDegeri); // ORNEK KULLANIM detaylar icin ctrl+click yapip fonksiyon aciklamasini oku
-            
+            MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
         }
         else if (other.CompareTag("engel"))
         {
