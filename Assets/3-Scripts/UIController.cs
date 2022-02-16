@@ -62,6 +62,7 @@ public class UIController : MonoBehaviour
 		TapToStartPanel.SetActive(true);
 		LevelController.instance.RestartLevelEvents();
 		SetTapToStartScoreText();
+	
 	}
 
 

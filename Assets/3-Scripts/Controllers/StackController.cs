@@ -94,9 +94,9 @@ public class StackController : MonoBehaviour
 
     public void DropObjectMethod(BaseCollectable baseObject, Collider other)
     {
-        baseObject.gameObject.AddComponent<Rigidbody>().useGravity = true;
+       baseObject.gameObject.AddComponent<Rigidbody>().useGravity = true;
 
-        baseObject.gameObject.GetComponent<BoxCollider>().isTrigger = false;
+        baseObject.gameObject.GetComponent<BoxCollider>().isTrigger = false; 
 
 
 

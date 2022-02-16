@@ -38,11 +38,15 @@ public class House : MonoBehaviour
             if (groundCount != groundCountLimit)
             {
                 groundCount++;
+                SetScore();
+                
 
             }
             else if (groundCount == groundCountLimit && wallCount != wallCountLimit)
             {
                 wallCount++;
+
+                SetScore();
 
             }
 
@@ -50,20 +54,27 @@ public class House : MonoBehaviour
             {
 
                 roofCount++;
+                SetScore();
+
                 CheckObjects();
             }
 
-
+            
             CheckObjects();
             StartCoroutine(DestroyObjects(other));
-
+            
         }
+    }
+
+    private void SetScore()
+    {
+        GameController.instance.SetScore(PlayerController.instance.collectibleDegeri);
     }
 
     private IEnumerator DestroyObjects(Collider other)
     {
         yield return new WaitForSeconds(0.5f);
-        
+
         if (gameObject != null)
         {
             GameObject gameObject = other.gameObject;
@@ -94,7 +105,7 @@ public class House : MonoBehaviour
             roof.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
 
             FinishHouse();
-            
+
 
 
 
@@ -119,6 +130,6 @@ public class House : MonoBehaviour
         transform.DORotate(new Vector3(0, 360, 0), 5, RotateMode.FastBeyond360);
 
     }
-   
+
 
 }
