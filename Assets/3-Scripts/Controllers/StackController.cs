@@ -61,7 +61,7 @@ public class StackController : MonoBehaviour
         if (stackObjectsList.Count % 2 == 0 || stackObjectsList.Count == 0)
         {
             double heightSqrt = stackObjectsList.Count / 2;
-            double height = heightSqrt / 2;
+            double height = heightSqrt / 6;
 
             baseObject.transform.DOMove(new Vector3(CollectPoint.transform.position.x, CollectPoint.transform.position.y + ((float)height), CollectPoint.transform.position.z + (baseObject.transform.localScale.z / 2)), 0).OnComplete(() =>
             {
@@ -76,7 +76,7 @@ public class StackController : MonoBehaviour
         {
 
             double heightSqrt = stackObjectsList.Count / 2;
-            double height = heightSqrt / 2;
+            double height = heightSqrt / 6;
 
             baseObject.transform.DOMove(new Vector3(CollectPoint.transform.position.x, CollectPoint.transform.position.y + ((float)height), CollectPoint.transform.position.z + (-baseObject.transform.localScale.z / 2)), 0).OnComplete(() =>
             {
