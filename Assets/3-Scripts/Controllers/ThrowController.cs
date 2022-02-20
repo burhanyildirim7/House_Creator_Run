@@ -8,7 +8,7 @@ public class ThrowController : MonoBehaviour
 {
     public static ThrowController instance;
 
-    [SerializeField] private Transform waypoint1, wayPoint2, wayPoint3;
+    [SerializeField] private Transform waypoint1, wayPoint2;
 
     public List<BaseCollectable> throwObjectList;
 

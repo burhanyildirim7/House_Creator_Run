@@ -9,23 +9,31 @@ using UnityEngine.UI;
 public class House : MonoBehaviour
 {
     public static House instance;
-    [SerializeField] private GameObject ground, wall, roof;
+    [SerializeField] private GameObject zeminSeffaf, zeminAnim, duvarSeffaf, duvarAnim, catiSeffaf, catiAnim, ekObjeler;
     [SerializeField] private Text groundText, wallText, roofText;
+
+    public Animator zeminAnimator, duvarAnimator, catiAnimator,ekObjelerAnimator;
     public int groundCount, wallCount, roofCount;
     public int groundCountLimit, wallCountLimit, roofCountLimit;
 
     void Awake()
     {
         if (instance == null) instance = this;
-        wall.SetActive(false);
-        roof.SetActive(false);
 
+
+
+
+    }
+
+    private void Start()
+    {
+        zeminSeffaf.gameObject.SetActive(true);
     }
     private void Update()
     {
-        groundText.text = groundCount + "/" + groundCountLimit;
-        wallText.text = wallCount + "/" + wallCountLimit;
-        roofText.text = roofCount + "/" + roofCountLimit;
+        /*   groundText.text = groundCount + "/" + groundCountLimit;
+          wallText.text = wallCount + "/" + wallCountLimit;
+          roofText.text = roofCount + "/" + roofCountLimit; */
     }
 
 
@@ -39,7 +47,7 @@ public class House : MonoBehaviour
             {
                 groundCount++;
                 SetScore();
-                
+
 
             }
             else if (groundCount == groundCountLimit && wallCount != wallCountLimit)
@@ -57,12 +65,14 @@ public class House : MonoBehaviour
                 SetScore();
 
                 CheckObjects();
+
+
             }
 
-            
+
             CheckObjects();
             StartCoroutine(DestroyObjects(other));
-            
+
         }
     }
 
@@ -90,19 +100,19 @@ public class House : MonoBehaviour
 
         if (groundCount == groundCountLimit && groundCount != 0)
         {
-            ground.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
 
-            OpenWall();
+            OpenZeminAnim();
+
         }
         if (wallCount == wallCountLimit && wallCount != 0)
         {
-            wall.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
 
-            OpenRoof();
+
+            OpenDuvarAnim();
         }
         if (roofCount == roofCountLimit && roofCount != 0)
         {
-            roof.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
+
 
             FinishHouse();
 
@@ -112,24 +122,46 @@ public class House : MonoBehaviour
         }
     }
 
-    private void OpenWall()
+    private void OpenZeminAnim()
     {
-
-        wall.SetActive(true);
+        zeminAnim.SetActive(true);
+        zeminAnimator.Play("ZeminAnimation");
+        duvarSeffaf.SetActive(true);
 
     }
 
 
-    public void OpenRoof()
+    public void OpenDuvarAnim()
     {
-        roof.SetActive(true);
+        duvarAnim.SetActive(true);
+        duvarAnimator.Play("DuvarAnimation");
+        catiSeffaf.SetActive(true);
     }
 
     public void FinishHouse()
     {
-        transform.DORotate(new Vector3(0, 360, 0), 5, RotateMode.FastBeyond360);
-
+        catiAnim.SetActive(true);
+        catiAnimator.Play("CatiAnimation");
+        /*  transform.DORotate(new Vector3(0, 360, 0), 5, RotateMode.FastBeyond360); */
+        /* HouseController.instance.DestroyHouse(this); */
+        StartCoroutine(StartEkObjeler());
     }
 
+    private IEnumerator StartEkObjeler()
+    {
+        yield return new WaitForSeconds(1);
+        ekObjeler.SetActive(true);
+        ekObjelerAnimator.Play("ParkeAnimation");
+        StartCoroutine(StartHouseAnim());
+    }
 
+    private IEnumerator StartHouseAnim()
+    {
+        yield return new WaitForSeconds(6);
+        transform.gameObject.GetComponent<Animator>().SetTrigger("PastHouse");
+         yield return new WaitForSeconds(2);
+        HouseController.instance.DestroyHouse(this.gameObject);
+        HouseController.instance.houseList.Add(this.gameObject);
+            
+    }
 }
