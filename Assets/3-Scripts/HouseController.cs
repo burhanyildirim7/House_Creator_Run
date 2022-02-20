@@ -12,20 +12,23 @@ public class HouseController : MonoBehaviour
     private void Awake()
     {
         if (instance == null) instance = this;
- HouseController.instance.OpenHouse(0);
+        HouseController.instance.OpenHouse(0);
     }
     public void OpenHouse(int index)
     {
-       
-              
-          GameObject  currentLevelObj = Instantiate(houseList[index].gameObject,new Vector3(0,0,120f), Quaternion.identity);
+
+
+        GameObject currentLevelObj = new GameObject();
+
+        currentLevelObj = Instantiate(houseList[index].gameObject, new Vector3(0, 0, 250f), Quaternion.identity);
     }
 
-    public void DestroyHouse(GameObject house){
+    public void DestroyHouse(GameObject house)
+    {
         GameObject gameObject = house.gameObject;
-         houseList.Remove(gameObject);
+        houseList.Remove(gameObject);
         Destroy(gameObject);
-       
+
     }
 
 }

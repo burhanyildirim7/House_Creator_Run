@@ -6,7 +6,7 @@ public class CollectableRoof : BaseCollectable
 {
     public override void Collect()
     {
-        StackController.instance.StackObjectMethod(this);
-        ThrowController.instance.PlaceObjectAddMethod(this);
+        //StackController.instance.StackObjectMethod(this);
+        //ThrowController.instance.PlaceObjectAddMethod(this);
     }
 }

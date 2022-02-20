@@ -8,8 +8,8 @@ public class StackController : MonoBehaviour
 {
     public static StackController instance;
     public GameObject CollectPoint;
-    public List<BaseCollectable> stackObjectsList = new List<BaseCollectable>();
-    public List<BaseCollectable> StackObjectsList => stackObjectsList;
+    public List<GameObject> stackObjectsList = new List<GameObject>();
+    public List<GameObject> StackObjectsList => stackObjectsList;
     [HideInInspector]
     public bool triggerCheck;
 
@@ -28,7 +28,7 @@ public class StackController : MonoBehaviour
 
 
             if (stackObjectsList.Count > 0)
-                DropObjectMethod(stackObjectsList[stackObjectsList.Count - 1],other);
+                DropObjectMethod(stackObjectsList[stackObjectsList.Count - 1], other);
 
             triggerCheck = true;
         }
@@ -36,16 +36,16 @@ public class StackController : MonoBehaviour
         if (other.tag == "finish")
         {
             stackObjectsList.Clear();
-         
+
         }
 
 
     }
 
-  
-    
-      
-    
+
+
+
+
 
     void OnTriggerExit(Collider other)
     {
@@ -55,19 +55,19 @@ public class StackController : MonoBehaviour
         }
     }
 
-    public void StackObjectMethod(BaseCollectable baseObject)
+    public void StackObjectMethod(GameObject baseObject)
     {
 
         if (stackObjectsList.Count % 2 == 0 || stackObjectsList.Count == 0)
         {
             double heightSqrt = stackObjectsList.Count / 2;
-            double height = Math.Floor(heightSqrt);
+            double height = heightSqrt / 2;
 
-            baseObject.transform.DOMove(new Vector3(CollectPoint.transform.position.x + (baseObject.transform.localScale.x / 2), CollectPoint.transform.position.y + ((float)height), CollectPoint.transform.position.z), 0).OnComplete(() =>
+            baseObject.transform.DOMove(new Vector3(CollectPoint.transform.position.x, CollectPoint.transform.position.y + ((float)height), CollectPoint.transform.position.z + (baseObject.transform.localScale.z / 2)), 0).OnComplete(() =>
             {
-                baseObject.transform.DOLocalMoveX(baseObject.transform.localScale.x / 2, 0);
+                //baseObject.transform.DOLocalMoveX(baseObject.transform.localScale.x / 2, 0);
 
-                baseObject.transform.DOLocalMoveZ(baseObject.transform.localScale.z, 0);
+                //baseObject.transform.DOLocalMoveZ(baseObject.transform.localScale.z, 0);
 
             });
             baseObject.transform.DORotate(new Vector3(0, 0, 0), 0);
@@ -76,13 +76,13 @@ public class StackController : MonoBehaviour
         {
 
             double heightSqrt = stackObjectsList.Count / 2;
-            double height = Math.Floor(heightSqrt);
+            double height = heightSqrt / 2;
 
-            baseObject.transform.DOMove(new Vector3(CollectPoint.transform.position.x + (-baseObject.transform.localScale.x / 2), CollectPoint.transform.position.y + ((float)height), CollectPoint.transform.position.z), 0).OnComplete(() =>
+            baseObject.transform.DOMove(new Vector3(CollectPoint.transform.position.x, CollectPoint.transform.position.y + ((float)height), CollectPoint.transform.position.z + (-baseObject.transform.localScale.z / 2)), 0).OnComplete(() =>
             {
-                baseObject.transform.DOLocalMoveX(-baseObject.transform.localScale.x / 2, 0);
+                //baseObject.transform.DOLocalMoveX(-baseObject.transform.localScale.x / 2, 0);
 
-                baseObject.transform.DOLocalMoveZ(baseObject.transform.localScale.z, 0);
+                //baseObject.transform.DOLocalMoveZ(baseObject.transform.localScale.z, 0);
             });
             baseObject.transform.DORotate(new Vector3(0, 0, 0), 0);
         }
@@ -92,15 +92,15 @@ public class StackController : MonoBehaviour
     }
 
 
-    public void DropObjectMethod(BaseCollectable baseObject, Collider other)
+    public void DropObjectMethod(GameObject baseObject, Collider other)
     {
-       baseObject.gameObject.AddComponent<Rigidbody>().useGravity = true;
+        baseObject.AddComponent<Rigidbody>().useGravity = true;
 
-        baseObject.gameObject.GetComponent<BoxCollider>().isTrigger = false; 
+        baseObject.GetComponent<BoxCollider>().isTrigger = false;
 
 
 
-        baseObject.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(CheckObstacleHitPos(other), 7, 7) * 50f);
+        baseObject.GetComponent<Rigidbody>().AddForce(new Vector3(CheckObstacleHitPos(other), 7, 7) * 50f);
 
         baseObject.transform.parent = null;
 
@@ -113,14 +113,14 @@ public class StackController : MonoBehaviour
     {
         RaycastHit hit;
         Vector3 localHit;
-        float direction=1.5f;
+        float direction = 1.5f;
         float left = -1.5f;
         float right = 1.5f;
         if (Physics.Raycast(transform.position, transform.forward, out hit))
         {
             localHit = other.transform.InverseTransformPoint(hit.point);
             // Debug.Log(localHit);
-            
+
             if (localHit.x < 0)
                 direction = left;
             else if (localHit.x > 0)
@@ -132,8 +132,10 @@ public class StackController : MonoBehaviour
             return direction;
 
 
-        }else{
-              return direction;
+        }
+        else
+        {
+            return direction;
         }
 
 

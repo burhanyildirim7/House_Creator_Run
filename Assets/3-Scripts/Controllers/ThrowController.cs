@@ -10,7 +10,7 @@ public class ThrowController : MonoBehaviour
 
     [SerializeField] private Transform waypoint1, wayPoint2;
 
-    public List<BaseCollectable> throwObjectList;
+    public List<GameObject> throwObjectList;
 
 
     private void Awake()
@@ -29,6 +29,7 @@ public class ThrowController : MonoBehaviour
 
 
     }
+
 
     private IEnumerator StartPlaceObjects()
     {
@@ -59,7 +60,7 @@ public class ThrowController : MonoBehaviour
         }
 
 
-       
+
 
         yield return new WaitForSeconds(1.5f);
 
@@ -120,13 +121,13 @@ public class ThrowController : MonoBehaviour
 
 
 
-    public void PlaceObjectAddMethod(BaseCollectable brick)
+    public void PlaceObjectAddMethod(GameObject brick)
     {
         throwObjectList.Add(brick);
 
     }
 
-    public void PlaceObjectRemoveMethod(BaseCollectable brick)
+    public void PlaceObjectRemoveMethod(GameObject brick)
     {
         throwObjectList.Remove(brick);
 

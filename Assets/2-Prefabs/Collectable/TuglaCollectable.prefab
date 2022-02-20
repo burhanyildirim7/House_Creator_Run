@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2167141587544914994}
   - component: {fileID: 7754732178517559701}
+  - component: {fileID: 4350061578415787106}
   m_Layer: 0
   m_Name: TuglaCollectable
   m_TagString: Collectable
@@ -48,6 +49,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1464643, y: 0.8042094, z: 1.2111416}
   m_Center: {x: 0.04000914, y: 0.20198402, z: 0.10557079}
+--- !u!114 &4350061578415787106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2167141587544914995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 491760239bb75ad4296a413e5f6652c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _olusturalacakObje: {fileID: 7906595952463877418, guid: 78986af1e29a9744db967328ce4aab4d, type: 3}
 --- !u!1 &2167141588256021830
 GameObject:
   m_ObjectHideFlags: 0

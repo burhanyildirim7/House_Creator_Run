@@ -12,7 +12,7 @@ public class House : MonoBehaviour
     [SerializeField] private GameObject zeminSeffaf, zeminAnim, duvarSeffaf, duvarAnim, catiSeffaf, catiAnim, ekObjeler;
     [SerializeField] private Text groundText, wallText, roofText;
 
-    public Animator zeminAnimator, duvarAnimator, catiAnimator,ekObjelerAnimator;
+    public Animator zeminAnimator, duvarAnimator, catiAnimator, ekObjelerAnimator;
     public int groundCount, wallCount, roofCount;
     public int groundCountLimit, wallCountLimit, roofCountLimit;
 
@@ -89,7 +89,7 @@ public class House : MonoBehaviour
         {
             GameObject gameObject = other.gameObject;
             Destroy(gameObject);
-            ThrowController.instance.throwObjectList.Remove(gameObject.transform.GetComponent<BaseCollectable>());
+            ThrowController.instance.throwObjectList.Remove(gameObject.transform.GetComponent<GameObject>());
             DOTween.Kill(gameObject);
         }
 
@@ -159,9 +159,9 @@ public class House : MonoBehaviour
     {
         yield return new WaitForSeconds(6);
         transform.gameObject.GetComponent<Animator>().SetTrigger("PastHouse");
-         yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2);
         HouseController.instance.DestroyHouse(this.gameObject);
         HouseController.instance.houseList.Add(this.gameObject);
-            
+
     }
 }
