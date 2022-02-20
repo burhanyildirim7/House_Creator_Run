@@ -917,7 +917,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waypoint1: {fileID: 0}
   wayPoint2: {fileID: 0}
-  wayPoint3: {fileID: 0}
   throwObjectList: []
 --- !u!1 &1556881054 stripped
 GameObject:
@@ -4411,10 +4410,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LEVEL 3
       objectReference: {fileID: 0}
-    - target: {fileID: 5801267856236948418, guid: 947ee90ae61173d478f461ce6d95c8d7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 947ee90ae61173d478f461ce6d95c8d7, type: 3}
 --- !u!224 &6076736282974628086
@@ -4498,10 +4493,6 @@ PrefabInstance:
     - target: {fileID: 7096889343200402372, guid: 88983ecde4f6c2d4d9921c662500948c, type: 3}
       propertyPath: m_Name
       value: LEVEL 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7096889343200402372, guid: 88983ecde4f6c2d4d9921c662500948c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7096889343200402373, guid: 88983ecde4f6c2d4d9921c662500948c, type: 3}
       propertyPath: m_RootOrder
