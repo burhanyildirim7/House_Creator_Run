@@ -17,10 +17,7 @@ public class HouseController : MonoBehaviour
     public void OpenHouse(int index)
     {
 
-
-        GameObject currentLevelObj = new GameObject();
-
-        currentLevelObj = Instantiate(houseList[index].gameObject, new Vector3(0, 0, 250f), Quaternion.identity);
+        GameObject currentLevelObj = Instantiate(houseList[index].gameObject, new Vector3(0, 0, 250f), Quaternion.identity);
     }
 
     public void DestroyHouse(GameObject house)

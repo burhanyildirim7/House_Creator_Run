@@ -45,42 +45,144 @@ public class ThrowController : MonoBehaviour
             throwObjectList[i].transform.DOMoveZ(wayPoint2.position.z, 0.5f);
         }
 
+
         if (House.instance.roofCount != House.instance.roofCountLimit)
         {
             yield return new WaitForSeconds(0.5f);
-            for (int i = 0; i <= CheckThrowObject() - 1; i++)
+
+
+            //Debug.Log("birinci if");
+
+            for (int i = 0; i < throwObjectList.Count; i++)
             {
+                if (House.instance.roofCount != House.instance.roofCountLimit)
+                {
+                    yield return new WaitForSeconds(0.1f);
 
-                yield return new WaitForSeconds(0.1f);
+                    throwObjectList[i].transform.DOMove(House.instance.transform.position, 0.5f);
 
+                }
+                else
+                {
 
-                throwObjectList[i].transform.DOMove(House.instance.transform.position, 0.5f);
+                    GameController.instance.DestroyAllObject();
+                    throwObjectList.Clear();
+                }
 
             }
+
+            if (House.instance.roofCount != House.instance.roofCountLimit)
+            {
+                PlayerController.instance.WinBaslat(2);
+                GameController.instance.DestroyAllObject();
+                throwObjectList.Clear();
+            }
+            else
+            {
+                PlayerController.instance.WinBaslat(6);
+
+            }
+
+
+            /*
+            yield return new WaitForSeconds(2f);
+
+            if (House.instance.wallCount != House.instance.wallCountLimit)
+            {
+                Debug.Log("ikinci if");
+                CheckThrowObject();
+                for (int i = 0; i < CheckThrowObject(); i++)
+                {
+                    if (House.instance.roofCount != House.instance.roofCountLimit)
+                    {
+                        yield return new WaitForSeconds(0.1f);
+
+                        throwObjectList[i].transform.DOMove(House.instance.transform.position, 0.5f);
+
+                    }
+                    else
+                    {
+                        GameController.instance.DestroyAllObject();
+                        throwObjectList.Clear();
+                    }
+
+                }
+            }
+            else
+            {
+                CheckThrowObject();
+            }
+
+            yield return new WaitForSeconds(2f);
+
+            if (House.instance.roofCount != House.instance.roofCountLimit)
+            {
+                Debug.Log("ucuncu if");
+                CheckThrowObject();
+                for (int i = 0; i < CheckThrowObject(); i++)
+                {
+                    if (House.instance.roofCount != House.instance.roofCountLimit)
+                    {
+                        yield return new WaitForSeconds(0.1f);
+
+                        throwObjectList[i].transform.DOMove(House.instance.transform.position, 0.5f);
+
+                    }
+                    else
+                    {
+                        GameController.instance.DestroyAllObject();
+                        throwObjectList.Clear();
+                    }
+
+                }
+            }
+            else
+            {
+                CheckThrowObject();
+            }
+            */
+
         }
-
-
-
-
-        yield return new WaitForSeconds(1.5f);
-
-        foreach (var item in throwObjectList)
+        else
         {
 
-            if (item != null)
-            {
-                yield return new WaitForSeconds(0.1f);
-                item.transform.DOMove(House.instance.transform.position, 0.5f);
-            }
-
         }
 
+        //CheckThrowObject();
 
-
-
-        throwObjectList.Clear();
 
     }
+
+
+
+
+    //yield return new WaitForSeconds(1.5f);
+
+    /*
+    for (int i = throwObjectList.Count - 1; i >= 0; i--)
+    {
+        yield return new WaitForSeconds(0.1f);
+        throwObjectList[i].transform.DOMove(GameObject.FindGameObjectWithTag("House").gameObject.transform.position, 0.5f);
+    }
+
+
+    foreach (var item in throwObjectList)
+    {
+
+        if (item != null)
+        {
+            yield return new WaitForSeconds(0.1f);
+            item.transform.DOMove(House.instance.transform.position, 0.5f);
+        }
+
+    }
+
+    */
+
+
+
+
+
 
     public int CheckThrowObject()
     {
@@ -101,15 +203,18 @@ public class ThrowController : MonoBehaviour
 
         if (tempGround != tempGroundLimit && tempObject > tempGroundNet)
         {
+            Debug.Log("birinci hesap if");
             return tempGroundNet;
         }
         else if (tempGround != 0 && tempGround == tempGroundLimit && tempRoof == 0 && tempObject > tempWallNet)
         {
+            Debug.Log("ikinci hesap if");
             return tempWallNet;
         }
 
         else
         {
+            Debug.Log("ikinci hesap if");
             return tempObject;
         }
 

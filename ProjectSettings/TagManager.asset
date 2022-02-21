@@ -19,6 +19,7 @@ TagManager:
   - CollectableGround
   - CollectableWall
   - CollectableRoof
+  - House
   layers:
   - Default
   - TransparentFX

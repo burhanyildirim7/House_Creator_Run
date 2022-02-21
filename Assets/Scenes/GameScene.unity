@@ -3834,9 +3834,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5006983750598715692, guid: 69a729c5841d6b942a04fe6cf36fcb11, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204257469720132666, guid: 69a729c5841d6b942a04fe6cf36fcb11, type: 3}
+      propertyPath: xVarMi
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204257469720132666, guid: 69a729c5841d6b942a04fe6cf36fcb11, type: 3}
+      propertyPath: collectibleDegeri
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6204257469720132667, guid: 69a729c5841d6b942a04fe6cf36fcb11, type: 3}
       propertyPath: m_Constraints
       value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204257469974283767, guid: 69a729c5841d6b942a04fe6cf36fcb11, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6204257470495606976, guid: 69a729c5841d6b942a04fe6cf36fcb11, type: 3}
       propertyPath: m_RootOrder

@@ -46,17 +46,17 @@ public class PlayerController : MonoBehaviour
         {
             // ENGELELRE CARPINCA YAPILACAKLAR....
             // GameController.instance.SetScore(-collectibleDegeri);
-           
+
             // ORNEK KULLANIM detaylar icin ctrl+click yapip fonksiyon aciklamasini oku
 
-             MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
+            MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
             if (StackController.instance.StackObjectsList.Count <= 0 && !StackController.instance.triggerCheck) // SKOR SIFIRIN ALTINA DUSTUYSE - GameController.instance.score < 0
             {
                 // FAİL EVENTLERİ BURAYA YAZILACAK..
                 GameController.instance.isContinue = false; // çarptığı anda oyuncunun yerinde durması ilerlememesi için
                 UIController.instance.ActivateLooseScreen(); // Bu fonksiyon direk çağrılada bilir veya herhangi bir effect veya animasyon bitiminde de çağrılabilir..
                 IdleAnim();
-                                                             // oyuncu fail durumunda bu fonksiyon çağrılacak.. 
+                // oyuncu fail durumunda bu fonksiyon çağrılacak.. 
             }
 
 
@@ -67,17 +67,18 @@ public class PlayerController : MonoBehaviour
             // FINISH NOKTASINA GELINCE YAPILACAKLAR... Totalscore artırma, x işlemleri, efektler v.s. v.s.
             //
             GameController.instance.isContinue = false;
+            IdleAnim();
             transform.DOMove(new Vector3(0, transform.position.y, transform.position.z), 0.5f).OnComplete(() =>
             {
-                IdleAnim();
+                //IdleAnim();
             });
-                
+
             //
             // GameController.instance.ScoreCarp(3);  // Bu fonksiyon normalde x ler hesaplandıktan sonra çağrılacak. Parametre olarak x i alıyor. 
             // x değerine göre oyuncunun total scoreunu hesaplıyor.. x li olmayan oyunlarda parametre olarak 1 gönderilecek.
 
             //
-            StartCoroutine(ActiveWinScreen()); //////////////////
+            //StartCoroutine(ActiveWinScreen()); //////////////////
 
             //
 
@@ -96,14 +97,14 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void StartingEvents()
     {
-     
+
         transform.parent.transform.rotation = Quaternion.Euler(0, 0, 0);
         transform.parent.transform.position = Vector3.zero;
         GameController.instance.isContinue = false;
         GameController.instance.score = 0;
         transform.position = new Vector3(0, transform.position.y, 0);
         GetComponent<Collider>().enabled = true;
-      
+
     }
 
 
@@ -118,12 +119,17 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private IEnumerator ActiveWinScreen()
+    private IEnumerator ActiveWinScreen(int delay)
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(delay);
         UIController.instance.ActivateWinScreen();
         GameController.instance.DestroyAllObject();
         GameController.instance.ScoreCarp(1);
+    }
+
+    public void WinBaslat(int sure)
+    {
+        StartCoroutine(ActiveWinScreen(sure));
     }
 
 

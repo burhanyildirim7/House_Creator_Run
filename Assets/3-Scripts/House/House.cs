@@ -9,31 +9,31 @@ using UnityEngine.UI;
 public class House : MonoBehaviour
 {
     public static House instance;
-    [SerializeField] private GameObject zeminSeffaf, zeminAnim, duvarSeffaf, duvarAnim, catiSeffaf, catiAnim, ekObjeler;
+    [SerializeField] private GameObject zeminSeffaf, zeminAnim, duvarSeffaf, duvarAnim, catiSeffaf, catiAnim, ekObjeler, animasyonObject, groundTextObject, wallTextObject, roofTextObject;
     [SerializeField] private Text groundText, wallText, roofText;
 
     public Animator zeminAnimator, duvarAnimator, catiAnimator, ekObjelerAnimator;
     public int groundCount, wallCount, roofCount;
     public int groundCountLimit, wallCountLimit, roofCountLimit;
 
+
+
     void Awake()
     {
         if (instance == null) instance = this;
-
-
-
 
     }
 
     private void Start()
     {
-        zeminSeffaf.gameObject.SetActive(true);
+        StartingEvents();
     }
+
     private void Update()
     {
-        /*   groundText.text = groundCount + "/" + groundCountLimit;
-          wallText.text = wallCount + "/" + wallCountLimit;
-          roofText.text = roofCount + "/" + roofCountLimit; */
+        groundText.text = groundCount + " / " + groundCountLimit;
+        wallText.text = wallCount + " / " + wallCountLimit;
+        roofText.text = roofCount + " / " + roofCountLimit;
     }
 
 
@@ -45,33 +45,39 @@ public class House : MonoBehaviour
 
             if (groundCount != groundCountLimit)
             {
+                //groundCount = PlayerPrefs.GetInt("ZeminDeger");
                 groundCount++;
                 SetScore();
+
+                PlayerPrefs.SetInt("ZeminDeger", groundCount);
 
 
             }
             else if (groundCount == groundCountLimit && wallCount != wallCountLimit)
             {
+                //wallCount = PlayerPrefs.GetInt("GovdeDeger");
                 wallCount++;
-
                 SetScore();
 
-            }
+                PlayerPrefs.SetInt("GovdeDeger", wallCount);
 
+            }
             else if (wallCount == wallCountLimit && roofCount != roofCountLimit)
             {
-
+                //roofCount = PlayerPrefs.GetInt("CatiDeger");
                 roofCount++;
                 SetScore();
 
-                CheckObjects();
+                PlayerPrefs.SetInt("CatiDeger", roofCount);
+
+                //CheckObjects();
 
 
             }
 
 
             CheckObjects();
-            StartCoroutine(DestroyObjects(other));
+            //StartCoroutine(DestroyObjects(other));
 
         }
     }
@@ -115,15 +121,14 @@ public class House : MonoBehaviour
 
 
             FinishHouse();
-
-
-
-
         }
     }
 
     private void OpenZeminAnim()
     {
+        zeminSeffaf.SetActive(false);
+        groundTextObject.SetActive(false);
+        wallTextObject.SetActive(true);
         zeminAnim.SetActive(true);
         zeminAnimator.Play("ZeminAnimation");
         duvarSeffaf.SetActive(true);
@@ -133,6 +138,9 @@ public class House : MonoBehaviour
 
     public void OpenDuvarAnim()
     {
+        duvarSeffaf.SetActive(false);
+        wallTextObject.SetActive(false);
+        roofTextObject.SetActive(true);
         duvarAnim.SetActive(true);
         duvarAnimator.Play("DuvarAnimation");
         catiSeffaf.SetActive(true);
@@ -140,6 +148,8 @@ public class House : MonoBehaviour
 
     public void FinishHouse()
     {
+        catiSeffaf.SetActive(false);
+        roofTextObject.SetActive(false);
         catiAnim.SetActive(true);
         catiAnimator.Play("CatiAnimation");
         /*  transform.DORotate(new Vector3(0, 360, 0), 5, RotateMode.FastBeyond360); */
@@ -157,11 +167,36 @@ public class House : MonoBehaviour
 
     private IEnumerator StartHouseAnim()
     {
-        yield return new WaitForSeconds(6);
-        transform.gameObject.GetComponent<Animator>().SetTrigger("PastHouse");
+        yield return new WaitForSeconds(3);
+        animasyonObject.GetComponent<Animator>().SetTrigger("PastHouse");
         yield return new WaitForSeconds(2);
         HouseController.instance.DestroyHouse(this.gameObject);
         HouseController.instance.houseList.Add(this.gameObject);
 
     }
+
+    private void StartingEvents()
+    {
+        wallTextObject.SetActive(false);
+        roofTextObject.SetActive(false);
+        groundTextObject.SetActive(true);
+        zeminSeffaf.gameObject.SetActive(true);
+
+
+        groundCount = PlayerPrefs.GetInt("ZeminDeger");
+        wallCount = PlayerPrefs.GetInt("GovdeDeger");
+        roofCount = PlayerPrefs.GetInt("CatiDeger");
+
+        CheckObjects();
+
+    }
+
+    /*
+    public void HouseDegerKayitEvent()
+    {
+        PlayerPrefs.SetInt("ZeminDeger", groundCount);
+        PlayerPrefs.SetInt("GovdeDeger", wallCount);
+        PlayerPrefs.SetInt("CatiDeger", roofCount);
+    }
+    */
 }
