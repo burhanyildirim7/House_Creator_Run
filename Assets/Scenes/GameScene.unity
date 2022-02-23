@@ -3898,6 +3898,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6204257470495606977, guid: 69a729c5841d6b942a04fe6cf36fcb11, type: 3}
+      propertyPath: _speed
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6204257470495607004, guid: 69a729c5841d6b942a04fe6cf36fcb11, type: 3}
       propertyPath: m_Name
       value: KarakterPaketi

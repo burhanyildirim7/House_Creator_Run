@@ -20,6 +20,7 @@ TagManager:
   - CollectableWall
   - CollectableRoof
   - House
+  - EvSpawnPoint
   layers:
   - Default
   - TransparentFX

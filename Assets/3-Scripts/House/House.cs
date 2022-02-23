@@ -189,6 +189,15 @@ public class House : MonoBehaviour
 
         CheckObjects();
 
+        //HouseKonum();
+
+    }
+
+    public void HouseKonum()
+    {
+        GameObject spawnpoint = GameObject.FindGameObjectWithTag("EvSpawnPoint");
+        Debug.Log(spawnpoint);
+        transform.position = spawnpoint.transform.position;
     }
 
     /*

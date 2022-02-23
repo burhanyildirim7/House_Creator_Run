@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        //HouseController.instance.EvOlustur();
         StartingEvents();
     }
 
@@ -50,6 +51,7 @@ public class PlayerController : MonoBehaviour
             // ORNEK KULLANIM detaylar icin ctrl+click yapip fonksiyon aciklamasini oku
 
             MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
+
             if (StackController.instance.StackObjectsList.Count <= 0 && !StackController.instance.triggerCheck) // SKOR SIFIRIN ALTINA DUSTUYSE - GameController.instance.score < 0
             {
                 // FAİL EVENTLERİ BURAYA YAZILACAK..
@@ -105,8 +107,14 @@ public class PlayerController : MonoBehaviour
         transform.position = new Vector3(0, transform.position.y, 0);
         GetComponent<Collider>().enabled = true;
 
+        Invoke("HouseKonum", 0.1f);
+
     }
 
+    private void HouseKonum()
+    {
+        House.instance.HouseKonum();
+    }
 
     public void IdleAnim()
     {
