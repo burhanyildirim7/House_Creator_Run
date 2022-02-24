@@ -3850,6 +3850,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 126
       objectReference: {fileID: 0}
+    - target: {fileID: 6204257469720132668, guid: 69a729c5841d6b942a04fe6cf36fcb11, type: 3}
+      propertyPath: _tozEfekti
+      value: 
+      objectReference: {fileID: 6204257470625893393}
     - target: {fileID: 6204257469974283767, guid: 69a729c5841d6b942a04fe6cf36fcb11, type: 3}
       propertyPath: m_LocalPosition.y
       value: 50
@@ -3912,6 +3916,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69a729c5841d6b942a04fe6cf36fcb11, type: 3}
+--- !u!198 &6204257470625893393 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6965344156156803608, guid: 69a729c5841d6b942a04fe6cf36fcb11, type: 3}
+  m_PrefabInstance: {fileID: 6204257470625893392}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6589184238872355215
 RectTransform:
   m_ObjectHideFlags: 0

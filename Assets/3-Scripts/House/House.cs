@@ -16,6 +16,8 @@ public class House : MonoBehaviour
     public int groundCount, wallCount, roofCount;
     public int groundCountLimit, wallCountLimit, roofCountLimit;
 
+    [SerializeField] private ParticleSystem _tozEfekti;
+
 
 
     void Awake()
@@ -41,7 +43,7 @@ public class House : MonoBehaviour
     {
         if (other.tag == "Collectable")
         {
-
+            _tozEfekti.Play();
 
             if (groundCount != groundCountLimit)
             {

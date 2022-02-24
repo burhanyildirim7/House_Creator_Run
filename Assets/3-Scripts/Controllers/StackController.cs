@@ -13,6 +13,9 @@ public class StackController : MonoBehaviour
     [HideInInspector]
     public bool triggerCheck;
 
+
+    [SerializeField] private ParticleSystem _tozEfekti;
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -69,6 +72,9 @@ public class StackController : MonoBehaviour
 
                 //baseObject.transform.DOLocalMoveZ(baseObject.transform.localScale.z, 0);
 
+                _tozEfekti.gameObject.transform.position = new Vector3(CollectPoint.transform.position.x, CollectPoint.transform.position.y + ((float)height), CollectPoint.transform.position.z + (baseObject.transform.localScale.z / 2));
+                _tozEfekti.Play();
+
             });
             baseObject.transform.DORotate(new Vector3(0, 0, 0), 0);
         }
@@ -83,6 +89,9 @@ public class StackController : MonoBehaviour
                 //baseObject.transform.DOLocalMoveX(-baseObject.transform.localScale.x / 2, 0);
 
                 //baseObject.transform.DOLocalMoveZ(baseObject.transform.localScale.z, 0);
+
+                _tozEfekti.gameObject.transform.position = new Vector3(CollectPoint.transform.position.x, CollectPoint.transform.position.y + ((float)height), CollectPoint.transform.position.z + (-baseObject.transform.localScale.z / 2));
+                _tozEfekti.Play();
             });
             baseObject.transform.DORotate(new Vector3(0, 0, 0), 0);
         }
