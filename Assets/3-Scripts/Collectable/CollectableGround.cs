@@ -13,6 +13,7 @@ public class CollectableGround : MonoBehaviour
     {
 
         GameObject obje = Instantiate(_olusturalacakObje, transform.position, Quaternion.identity);
+        //obje.transform.parent = GameObject.FindGameObjectWithTag("Player").transform;
         StackController.instance.StackObjectMethod(obje);
         ThrowController.instance.PlaceObjectAddMethod(obje);
     }

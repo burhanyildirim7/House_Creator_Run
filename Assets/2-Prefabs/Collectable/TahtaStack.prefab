@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1208008625674896563}
   - component: {fileID: 6093349995945079618}
+  - component: {fileID: 6869582808079755321}
   m_Layer: 0
   m_Name: TahtaStack
   m_TagString: Collectable
@@ -130,6 +131,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6869582808079755321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208008625674896562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76e5b63301e344c7d9dab9b2e72b2d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tahta: 1
+  _cimento: 0
+  _tugla: 0
 --- !u!1 &8359201745610405422
 GameObject:
   m_ObjectHideFlags: 0

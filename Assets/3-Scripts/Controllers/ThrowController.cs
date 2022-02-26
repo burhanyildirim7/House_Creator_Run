@@ -10,7 +10,7 @@ public class ThrowController : MonoBehaviour
 
     [SerializeField] private Transform waypoint1, wayPoint2;
 
-    public List<GameObject> throwObjectList;
+    public List<GameObject> throwObjectList = new List<GameObject>();
 
 
     private void Awake()
@@ -24,6 +24,7 @@ public class ThrowController : MonoBehaviour
     {
         if (other.tag == "finish")
         {
+            other.gameObject.GetComponent<BoxCollider>().enabled = false;
             StartCoroutine(StartPlaceObjects());
         }
 
@@ -33,7 +34,7 @@ public class ThrowController : MonoBehaviour
 
     private IEnumerator StartPlaceObjects()
     {
-
+        /*
         for (int i = throwObjectList.Count - 1; i >= 0; i--)
         {
             yield return new WaitForSeconds(0.1f);
@@ -44,7 +45,7 @@ public class ThrowController : MonoBehaviour
         {
             throwObjectList[i].transform.DOMoveZ(wayPoint2.position.z, 0.5f);
         }
-
+        */
 
         if (House.instance.roofCount != House.instance.roofCountLimit)
         {
@@ -53,32 +54,40 @@ public class ThrowController : MonoBehaviour
 
             //Debug.Log("birinci if");
 
-            for (int i = 0; i < throwObjectList.Count; i++)
+            int listeuzunlugu = throwObjectList.Count - 1;
+
+            for (int i = listeuzunlugu; i >= 0; i--)
             {
+                Debug.Log("AMINA KOYAM GAME MANAGER" + listeuzunlugu);
                 if (House.instance.roofCount != House.instance.roofCountLimit)
                 {
-                    yield return new WaitForSeconds(0.1f);
+                    yield return new WaitForSeconds(0.25f);
 
-                    throwObjectList[i].transform.DOMove(House.instance.transform.position, 0.5f);
+                    throwObjectList[throwObjectList.Count - 1].transform.DOMove(House.instance.transform.position, 0.5f);
+                    throwObjectList.RemoveAt(throwObjectList.Count - 1);
 
                 }
                 else
                 {
-
+                    Debug.Log("Forun Elsine Girdim");
                     GameController.instance.DestroyAllObject();
                     throwObjectList.Clear();
                 }
+
 
             }
 
             if (House.instance.roofCount != House.instance.roofCountLimit)
             {
+                yield return new WaitForSeconds(1f);
+                Debug.Log("Forun Altındaki İlk İfteyim");
                 PlayerController.instance.WinBaslat(2);
                 GameController.instance.DestroyAllObject();
                 throwObjectList.Clear();
             }
             else
             {
+                Debug.Log("Forun Altındaki İlk İfin Elsindeyim");
                 PlayerController.instance.WinBaslat(6);
 
             }
@@ -183,7 +192,7 @@ public class ThrowController : MonoBehaviour
 
 
 
-
+    /*
     public int CheckThrowObject()
     {
         int tempGround = House.instance.groundCount;
@@ -223,7 +232,7 @@ public class ThrowController : MonoBehaviour
 
 
     }
-
+    */
 
 
     public void PlaceObjectAddMethod(GameObject brick)

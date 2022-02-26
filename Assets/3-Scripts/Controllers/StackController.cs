@@ -16,6 +16,8 @@ public class StackController : MonoBehaviour
 
     [SerializeField] private ParticleSystem _tozEfekti;
 
+    private Transform _collectPointTransform;
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -45,7 +47,10 @@ public class StackController : MonoBehaviour
 
     }
 
+    private void Update()
+    {
 
+    }
 
 
 
@@ -66,17 +71,17 @@ public class StackController : MonoBehaviour
             double heightSqrt = stackObjectsList.Count / 2;
             double height = heightSqrt / 6;
 
-            baseObject.transform.DOMove(new Vector3(CollectPoint.transform.position.x, CollectPoint.transform.position.y + ((float)height), CollectPoint.transform.position.z + (baseObject.transform.localScale.z / 2)), 0).OnComplete(() =>
+            baseObject.transform.DOLocalMove(new Vector3(CollectPoint.transform.localPosition.x, CollectPoint.transform.localPosition.y + ((float)height), 0 + (baseObject.transform.localScale.z / 2)), 0.5f).OnComplete(() =>
             {
                 //baseObject.transform.DOLocalMoveX(baseObject.transform.localScale.x / 2, 0);
 
                 //baseObject.transform.DOLocalMoveZ(baseObject.transform.localScale.z, 0);
 
-                _tozEfekti.gameObject.transform.position = new Vector3(CollectPoint.transform.position.x, CollectPoint.transform.position.y + ((float)height), CollectPoint.transform.position.z + (baseObject.transform.localScale.z / 2));
+                _tozEfekti.gameObject.transform.localPosition = new Vector3(CollectPoint.transform.localPosition.x, CollectPoint.transform.localPosition.y + ((float)height), 0 + (baseObject.transform.localScale.z / 2));
                 _tozEfekti.Play();
 
             });
-            baseObject.transform.DORotate(new Vector3(0, 0, 0), 0);
+            baseObject.transform.DORotate(new Vector3(0, 0, 0), 1);
         }
         else if (stackObjectsList.Count % 2 == 1 || stackObjectsList.Count == 1)
         {
@@ -84,16 +89,16 @@ public class StackController : MonoBehaviour
             double heightSqrt = stackObjectsList.Count / 2;
             double height = heightSqrt / 6;
 
-            baseObject.transform.DOMove(new Vector3(CollectPoint.transform.position.x, CollectPoint.transform.position.y + ((float)height), CollectPoint.transform.position.z + (-baseObject.transform.localScale.z / 2)), 0).OnComplete(() =>
+            baseObject.transform.DOLocalMove(new Vector3(CollectPoint.transform.localPosition.x, CollectPoint.transform.localPosition.y + ((float)height), 0 + (-baseObject.transform.localScale.z / 2)), 0.5f).OnComplete(() =>
             {
                 //baseObject.transform.DOLocalMoveX(-baseObject.transform.localScale.x / 2, 0);
 
                 //baseObject.transform.DOLocalMoveZ(baseObject.transform.localScale.z, 0);
 
-                _tozEfekti.gameObject.transform.position = new Vector3(CollectPoint.transform.position.x, CollectPoint.transform.position.y + ((float)height), CollectPoint.transform.position.z + (-baseObject.transform.localScale.z / 2));
+                _tozEfekti.gameObject.transform.localPosition = new Vector3(CollectPoint.transform.localPosition.x, CollectPoint.transform.localPosition.y + ((float)height), 0 + (-baseObject.transform.localScale.z / 2));
                 _tozEfekti.Play();
             });
-            baseObject.transform.DORotate(new Vector3(0, 0, 0), 0);
+            baseObject.transform.DORotate(new Vector3(0, 0, 0), 1);
         }
 
         stackObjectsList.Add(baseObject);

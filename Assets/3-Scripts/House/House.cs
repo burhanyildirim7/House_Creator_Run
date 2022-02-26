@@ -14,11 +14,18 @@ public class House : MonoBehaviour
 
     public Animator zeminAnimator, duvarAnimator, catiAnimator, ekObjelerAnimator;
     public int groundCount, wallCount, roofCount;
-    public int groundCountLimit, wallCountLimit, roofCountLimit;
+    public int _zeminTahtaCountLimit, _zeminCimentoCountLimit, _zeminTuglaCountLimit;
+    public int _govdeTahtaCountLimit, _govdeCimentoCountLimit, _govdeTuglaCountLimit;
+    public int _catiTahtaCountLimit, _catiCimentoCountLimit, _catiTuglaCountLimit;
 
     [SerializeField] private ParticleSystem _tozEfekti;
 
+    private int _tahtaCount, _cimentoCount, tuglaCount;
 
+    public int roofCountLimit;
+
+    [SerializeField] private List<GameObject> _zeminTahtalar;
+    [SerializeField] private List<GameObject> _zeminCimentolar;
 
     void Awake()
     {
@@ -33,9 +40,11 @@ public class House : MonoBehaviour
 
     private void Update()
     {
+        /*
         groundText.text = groundCount + " / " + groundCountLimit;
         wallText.text = wallCount + " / " + wallCountLimit;
         roofText.text = roofCount + " / " + roofCountLimit;
+        */
     }
 
 
@@ -45,6 +54,28 @@ public class House : MonoBehaviour
         {
             _tozEfekti.Play();
 
+
+            if (other.GetComponent<ParcalarScript>()._tahta)
+            {
+                _tahtaCount++;
+                _zeminTahtalar[_tahtaCount - 1].SetActive(true);
+                Debug.Log("Tahta Geldi");
+            }
+            else if (other.GetComponent<ParcalarScript>()._cimento)
+            {
+                _cimentoCount++;
+                _zeminCimentolar[_cimentoCount - 1].SetActive(true);
+                Debug.Log("Cimento Geldi");
+            }
+            else if (other.GetComponent<ParcalarScript>()._tugla)
+            {
+                Debug.Log("Tugla Geldi");
+            }
+            else
+            {
+                Debug.Log("sonuncu sayma test");
+            }
+            /*
             if (groundCount != groundCountLimit)
             {
                 //groundCount = PlayerPrefs.GetInt("ZeminDeger");
@@ -76,10 +107,11 @@ public class House : MonoBehaviour
 
 
             }
-
+            */
 
             CheckObjects();
-            //StartCoroutine(DestroyObjects(other));
+            Destroy(other.gameObject);
+            // StartCoroutine(DestroyObjects(other));
 
         }
     }
@@ -105,7 +137,7 @@ public class House : MonoBehaviour
 
     private void CheckObjects()
     {
-
+        /*
         if (groundCount == groundCountLimit && groundCount != 0)
         {
 
@@ -124,6 +156,7 @@ public class House : MonoBehaviour
 
             FinishHouse();
         }
+        */
     }
 
     private void OpenZeminAnim()
@@ -184,10 +217,11 @@ public class House : MonoBehaviour
         groundTextObject.SetActive(true);
         zeminSeffaf.gameObject.SetActive(true);
 
-
+        /*
         groundCount = PlayerPrefs.GetInt("ZeminDeger");
         wallCount = PlayerPrefs.GetInt("GovdeDeger");
         roofCount = PlayerPrefs.GetInt("CatiDeger");
+        */
 
         CheckObjects();
 
