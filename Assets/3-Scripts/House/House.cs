@@ -30,6 +30,8 @@ public class House : MonoBehaviour
 
     public bool _binaBitti;
 
+    private int _zeminTamam, _duvar1Tamam, _duvar2Tamam, _duvar3Tamam, _duvar4Tamam, _duvar5Tamam, _cati1Tamam, _cati2Tamam;
+
 
 
     void Awake()
@@ -66,27 +68,163 @@ public class House : MonoBehaviour
             {
                 _tahtaCount++;
 
+                PlayerPrefs.SetInt("TahtaCount", _tahtaCount);
+
                 if (_zemin == false)
                 {
-                    if (_binaBolumleri[0].transform.FindChild("TAHTA").transform.childCount > _tahtaCount - 1)
+                    if (_binaBolumleri[0].transform.FindChild("TAHTA") != null)
                     {
-                        _binaBolumleri[0].transform.FindChild("TAHTA").transform.GetChild(_tahtaCount - 1).gameObject.SetActive(true);
+                        if (_binaBolumleri[0].transform.FindChild("TAHTA").transform.childCount > _tahtaCount - 1)
+                        {
+                            _binaBolumleri[0].transform.FindChild("TAHTA").transform.GetChild(_tahtaCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
                     }
                     else
                     {
 
                     }
+
                 }
                 else if (_duvar1 == false)
                 {
-                    if (_binaBolumleri[1].transform.FindChild("TAHTA").transform.childCount > _tahtaCount - 1)
+                    if (_binaBolumleri[1].transform.FindChild("TAHTA") != null)
                     {
-                        _binaBolumleri[1].transform.FindChild("TAHTA").transform.GetChild(_tahtaCount - 1).gameObject.SetActive(true);
+                        if (_binaBolumleri[1].transform.FindChild("TAHTA").transform.childCount > _tahtaCount - 1)
+                        {
+                            _binaBolumleri[1].transform.FindChild("TAHTA").transform.GetChild(_tahtaCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
                     }
                     else
                     {
 
                     }
+
+                }
+                else if (_duvar2 == false)
+                {
+                    if (_binaBolumleri[2].transform.FindChild("TAHTA") != null)
+                    {
+                        if (_binaBolumleri[2].transform.FindChild("TAHTA").transform.childCount > _tahtaCount - 1)
+                        {
+                            _binaBolumleri[2].transform.FindChild("TAHTA").transform.GetChild(_tahtaCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else if (_duvar3 == false)
+                {
+                    if (_binaBolumleri[3].transform.FindChild("TAHTA") != null)
+                    {
+                        if (_binaBolumleri[3].transform.FindChild("TAHTA").transform.childCount > _tahtaCount - 1)
+                        {
+                            _binaBolumleri[3].transform.FindChild("TAHTA").transform.GetChild(_tahtaCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else if (_duvar4 == false)
+                {
+                    if (_binaBolumleri[4].transform.FindChild("TAHTA") != null)
+                    {
+                        if (_binaBolumleri[4].transform.FindChild("TAHTA").transform.childCount > _tahtaCount - 1)
+                        {
+                            _binaBolumleri[4].transform.FindChild("TAHTA").transform.GetChild(_tahtaCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else if (_duvar5 == false)
+                {
+                    if (_binaBolumleri[5].transform.FindChild("TAHTA") != null)
+                    {
+                        if (_binaBolumleri[5].transform.FindChild("TAHTA").transform.childCount > _tahtaCount - 1)
+                        {
+                            _binaBolumleri[5].transform.FindChild("TAHTA").transform.GetChild(_tahtaCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else if (_cati1 == false)
+                {
+                    if (_binaBolumleri[6].transform.FindChild("TAHTA") != null)
+                    {
+                        if (_binaBolumleri[6].transform.FindChild("TAHTA").transform.childCount > _tahtaCount - 1)
+                        {
+                            _binaBolumleri[6].transform.FindChild("TAHTA").transform.GetChild(_tahtaCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else if (_cati2 == false)
+                {
+                    if (_binaBolumleri[7].transform.FindChild("TAHTA") != null)
+                    {
+                        if (_binaBolumleri[7].transform.FindChild("TAHTA").transform.childCount > _tahtaCount - 1)
+                        {
+                            _binaBolumleri[7].transform.FindChild("TAHTA").transform.GetChild(_tahtaCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
                 }
 
 
@@ -96,27 +234,163 @@ public class House : MonoBehaviour
             {
                 _cimentoCount++;
 
+                PlayerPrefs.SetInt("CimentoCount", _cimentoCount);
+
                 if (_zemin == false)
                 {
-                    if (_binaBolumleri[0].transform.FindChild("CIMENTO").transform.childCount > _cimentoCount - 1)
+                    if (_binaBolumleri[0].transform.FindChild("CIMENTO") != null)
                     {
-                        _binaBolumleri[0].transform.FindChild("CIMENTO").transform.GetChild(_cimentoCount - 1).gameObject.SetActive(true);
+                        if (_binaBolumleri[0].transform.FindChild("CIMENTO").transform.childCount > _cimentoCount - 1)
+                        {
+                            _binaBolumleri[0].transform.FindChild("CIMENTO").transform.GetChild(_cimentoCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
                     }
                     else
                     {
 
                     }
+
                 }
                 else if (_duvar1 == false)
                 {
-                    if (_binaBolumleri[1].transform.FindChild("CIMENTO").transform.childCount > _cimentoCount - 1)
+                    if (_binaBolumleri[1].transform.FindChild("CIMENTO") != null)
                     {
-                        _binaBolumleri[1].transform.FindChild("CIMENTO").transform.GetChild(_cimentoCount - 1).gameObject.SetActive(true);
+                        if (_binaBolumleri[1].transform.FindChild("CIMENTO").transform.childCount > _cimentoCount - 1)
+                        {
+                            _binaBolumleri[1].transform.FindChild("CIMENTO").transform.GetChild(_cimentoCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
                     }
                     else
                     {
 
                     }
+
+                }
+                else if (_duvar2 == false)
+                {
+                    if (_binaBolumleri[2].transform.FindChild("CIMENTO") != null)
+                    {
+                        if (_binaBolumleri[2].transform.FindChild("CIMENTO").transform.childCount > _cimentoCount - 1)
+                        {
+                            _binaBolumleri[2].transform.FindChild("CIMENTO").transform.GetChild(_cimentoCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else if (_duvar3 == false)
+                {
+                    if (_binaBolumleri[3].transform.FindChild("CIMENTO") != null)
+                    {
+                        if (_binaBolumleri[3].transform.FindChild("CIMENTO").transform.childCount > _cimentoCount - 1)
+                        {
+                            _binaBolumleri[3].transform.FindChild("CIMENTO").transform.GetChild(_cimentoCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else if (_duvar4 == false)
+                {
+                    if (_binaBolumleri[4].transform.FindChild("CIMENTO") != null)
+                    {
+                        if (_binaBolumleri[4].transform.FindChild("CIMENTO").transform.childCount > _cimentoCount - 1)
+                        {
+                            _binaBolumleri[4].transform.FindChild("CIMENTO").transform.GetChild(_cimentoCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else if (_duvar5 == false)
+                {
+                    if (_binaBolumleri[5].transform.FindChild("CIMENTO") != null)
+                    {
+                        if (_binaBolumleri[5].transform.FindChild("CIMENTO").transform.childCount > _cimentoCount - 1)
+                        {
+                            _binaBolumleri[5].transform.FindChild("CIMENTO").transform.GetChild(_cimentoCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else if (_cati1 == false)
+                {
+                    if (_binaBolumleri[6].transform.FindChild("CIMENTO") != null)
+                    {
+                        if (_binaBolumleri[6].transform.FindChild("CIMENTO").transform.childCount > _cimentoCount - 1)
+                        {
+                            _binaBolumleri[6].transform.FindChild("CIMENTO").transform.GetChild(_cimentoCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else if (_cati2 == false)
+                {
+                    if (_binaBolumleri[7].transform.FindChild("CIMENTO") != null)
+                    {
+                        if (_binaBolumleri[7].transform.FindChild("CIMENTO").transform.childCount > _cimentoCount - 1)
+                        {
+                            _binaBolumleri[7].transform.FindChild("CIMENTO").transform.GetChild(_cimentoCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
                 }
 
 
@@ -126,21 +400,165 @@ public class House : MonoBehaviour
             {
                 _tuglaCount++;
 
+                PlayerPrefs.SetInt("TuglaCount", _tuglaCount);
+
                 if (_zemin == false)
                 {
-
-                }
-                else if (_duvar1 == false)
-                {
-                    if (_binaBolumleri[1].transform.FindChild("TUGLA").transform.childCount > _tuglaCount - 1)
+                    if (_binaBolumleri[0].transform.FindChild("TUGLA") != null)
                     {
-                        _binaBolumleri[1].transform.FindChild("TUGLA").transform.GetChild(_tuglaCount - 1).gameObject.SetActive(true);
+                        if (_binaBolumleri[0].transform.FindChild("TUGLA").transform.childCount > _tuglaCount - 1)
+                        {
+                            _binaBolumleri[0].transform.FindChild("TUGLA").transform.GetChild(_tuglaCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
                     }
                     else
                     {
 
                     }
                 }
+                else if (_duvar1 == false)
+                {
+                    if (_binaBolumleri[1].transform.FindChild("TUGLA") != null)
+                    {
+                        if (_binaBolumleri[1].transform.FindChild("TUGLA").transform.childCount > _tuglaCount - 1)
+                        {
+                            _binaBolumleri[1].transform.FindChild("TUGLA").transform.GetChild(_tuglaCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else if (_duvar2 == false)
+                {
+                    if (_binaBolumleri[2].transform.FindChild("TUGLA") != null)
+                    {
+                        if (_binaBolumleri[2].transform.FindChild("TUGLA").transform.childCount > _tuglaCount - 1)
+                        {
+                            _binaBolumleri[2].transform.FindChild("TUGLA").transform.GetChild(_tuglaCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else if (_duvar3 == false)
+                {
+                    if (_binaBolumleri[3].transform.FindChild("TUGLA") != null)
+                    {
+                        if (_binaBolumleri[3].transform.FindChild("TUGLA").transform.childCount > _tuglaCount - 1)
+                        {
+                            _binaBolumleri[3].transform.FindChild("TUGLA").transform.GetChild(_tuglaCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else if (_duvar4 == false)
+                {
+                    if (_binaBolumleri[4].transform.FindChild("TUGLA") != null)
+                    {
+                        if (_binaBolumleri[4].transform.FindChild("TUGLA").transform.childCount > _tuglaCount - 1)
+                        {
+                            _binaBolumleri[4].transform.FindChild("TUGLA").transform.GetChild(_tuglaCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else if (_duvar5 == false)
+                {
+                    if (_binaBolumleri[5].transform.FindChild("TUGLA") != null)
+                    {
+                        if (_binaBolumleri[5].transform.FindChild("TUGLA").transform.childCount > _tuglaCount - 1)
+                        {
+                            _binaBolumleri[5].transform.FindChild("TUGLA").transform.GetChild(_tuglaCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else if (_cati1 == false)
+                {
+                    if (_binaBolumleri[6].transform.FindChild("TUGLA") != null)
+                    {
+                        if (_binaBolumleri[6].transform.FindChild("TUGLA").transform.childCount > _tuglaCount - 1)
+                        {
+                            _binaBolumleri[6].transform.FindChild("TUGLA").transform.GetChild(_tuglaCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else if (_cati2 == false)
+                {
+                    if (_binaBolumleri[7].transform.FindChild("TUGLA") != null)
+                    {
+                        if (_binaBolumleri[7].transform.FindChild("TUGLA").transform.childCount > _tuglaCount - 1)
+                        {
+                            _binaBolumleri[7].transform.FindChild("TUGLA").transform.GetChild(_tuglaCount - 1).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+                else
+                {
+
+                }
+
+
                 Debug.Log("Tugla Geldi");
             }
             else
@@ -219,6 +637,7 @@ public class House : MonoBehaviour
                 _tahtaCount = 0;
                 _cimentoCount = 0;
                 _tuglaCount = 0;
+                PlayerPrefs.SetInt("ZeminTamam", 1);
             }
             else
             {
@@ -227,22 +646,124 @@ public class House : MonoBehaviour
         }
         else if (_duvar1 == false)
         {
-            if (_binaBolumleri[1].transform.FindChild("TAHTA").transform.childCount <= _tahtaCount - 1 && _binaBolumleri[1].transform.FindChild("CIMENTO").transform.childCount <= _cimentoCount - 1 && _binaBolumleri[1].transform.FindChild("TUGLA").transform.childCount == _tuglaCount - 1)
+            if (_binaBolumleri[1].transform.FindChild("TAHTA").transform.childCount <= _tahtaCount - 1 && _binaBolumleri[1].transform.FindChild("CIMENTO").transform.childCount <= _cimentoCount - 1 && _binaBolumleri[1].transform.FindChild("TUGLA").transform.childCount <= _tuglaCount - 1)
             {
                 _duvar1 = true;
                 // OpenZeminAnim();
                 _tahtaCount = 0;
                 _cimentoCount = 0;
                 _tuglaCount = 0;
+                PlayerPrefs.SetInt("Duvar1Tamam", 1);
             }
             else
             {
 
             }
         }
+        else if (_duvar2 == false)
+        {
+            if (_binaBolumleri[2].transform.FindChild("TAHTA").transform.childCount <= _tahtaCount - 1 && _binaBolumleri[2].transform.FindChild("CIMENTO").transform.childCount <= _cimentoCount - 1 && _binaBolumleri[2].transform.FindChild("TUGLA").transform.childCount <= _tuglaCount - 1)
+            {
+                _duvar2 = true;
+                // OpenZeminAnim();
+                _tahtaCount = 0;
+                _cimentoCount = 0;
+                _tuglaCount = 0;
+                PlayerPrefs.SetInt("Duvar2Tamam", 1);
+            }
+            else
+            {
+
+            }
+        }
+        else if (_duvar3 == false)
+        {
+            if (_binaBolumleri[3].transform.FindChild("TAHTA").transform.childCount <= _tahtaCount - 1 && _binaBolumleri[3].transform.FindChild("CIMENTO").transform.childCount <= _cimentoCount - 1 && _binaBolumleri[3].transform.FindChild("TUGLA").transform.childCount <= _tuglaCount - 1)
+            {
+                _duvar3 = true;
+                // OpenZeminAnim();
+                _tahtaCount = 0;
+                _cimentoCount = 0;
+                _tuglaCount = 0;
+                PlayerPrefs.SetInt("Duvar3Tamam", 1);
+            }
+            else
+            {
+
+            }
+        }
+        else if (_duvar4 == false)
+        {
+            if (_binaBolumleri[4].transform.FindChild("TAHTA").transform.childCount <= _tahtaCount - 1 && _binaBolumleri[4].transform.FindChild("CIMENTO").transform.childCount <= _cimentoCount - 1 && _binaBolumleri[4].transform.FindChild("TUGLA").transform.childCount <= _tuglaCount - 1)
+            {
+                _duvar4 = true;
+                // OpenZeminAnim();
+                _tahtaCount = 0;
+                _cimentoCount = 0;
+                _tuglaCount = 0;
+                PlayerPrefs.SetInt("Duvar4Tamam", 1);
+            }
+            else
+            {
+
+            }
+        }
+        else if (_duvar5 == false)
+        {
+            if (_binaBolumleri[5].transform.FindChild("TAHTA").transform.childCount <= _tahtaCount - 1 && _binaBolumleri[5].transform.FindChild("CIMENTO").transform.childCount <= _cimentoCount - 1 && _binaBolumleri[5].transform.FindChild("TUGLA").transform.childCount <= _tuglaCount - 1)
+            {
+                _duvar5 = true;
+                OpenDuvarAnim();
+                _tahtaCount = 0;
+                _cimentoCount = 0;
+                _tuglaCount = 0;
+                PlayerPrefs.SetInt("Duvar5Tamam", 1);
+            }
+            else
+            {
+
+            }
+        }
+        else if (_cati1 == false)
+        {
+            if (_binaBolumleri[6].transform.FindChild("TAHTA").transform.childCount <= _tahtaCount - 1 && _binaBolumleri[6].transform.FindChild("TUGLA").transform.childCount <= _tuglaCount - 1)
+            {
+                _cati1 = true;
+                //OpenDuvarAnim();
+                _tahtaCount = 0;
+                _cimentoCount = 0;
+                _tuglaCount = 0;
+                PlayerPrefs.SetInt("Cati1Tamam", 1);
+            }
+            else
+            {
+
+            }
+        }
+        else if (_cati2 == false)
+        {
+            if (_binaBolumleri[7].transform.FindChild("TAHTA").transform.childCount <= _tahtaCount - 1 && _binaBolumleri[7].transform.FindChild("TUGLA").transform.childCount <= _tuglaCount - 1)
+            {
+                _cati2 = true;
+                _binaBitti = true;
+                FinishHouse();
+                _tahtaCount = 0;
+                _cimentoCount = 0;
+                _tuglaCount = 0;
+                PlayerPrefs.SetInt("Cati2Tamam", 1);
+            }
+            else
+            {
+
+            }
+        }
+        else
+        {
+
+        }
 
 
-
+        //PlayerPrefs.Save();
 
 
         /*
@@ -265,6 +786,875 @@ public class House : MonoBehaviour
             FinishHouse();
         }
         */
+    }
+
+    [Obsolete]
+    private void SavingSystem()
+    {
+        if (_zeminTamam == 1)
+        {
+            _zemin = true;
+            OpenZeminAnim();
+        }
+        else
+        {
+            _zemin = false;
+
+            for (int i = 0; i < _tahtaCount; i++)
+            {
+                if (_binaBolumleri[0].transform.FindChild("TAHTA") != null)
+                {
+                    if (_binaBolumleri[0].transform.FindChild("TAHTA").transform.childCount > i)
+                    {
+                        _binaBolumleri[0].transform.FindChild("TAHTA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _cimentoCount; i++)
+            {
+                if (_binaBolumleri[0].transform.FindChild("CIMENTO") != null)
+                {
+                    if (_binaBolumleri[0].transform.FindChild("CIMENTO").transform.childCount > i)
+                    {
+                        _binaBolumleri[0].transform.FindChild("CIMENTO").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _tuglaCount; i++)
+            {
+                if (_binaBolumleri[0].transform.FindChild("TUGLA") != null)
+                {
+                    if (_binaBolumleri[0].transform.FindChild("TUGLA").transform.childCount > i)
+                    {
+                        _binaBolumleri[0].transform.FindChild("TUGLA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+        }
+
+
+        if (_duvar1Tamam == 1)
+        {
+            _duvar1 = true;
+
+            for (int i = 0; i < _binaBolumleri[1].transform.FindChild("TAHTA").transform.childCount; i++)
+            {
+                if (_binaBolumleri[1].transform.FindChild("TAHTA") != null)
+                {
+                    if (_binaBolumleri[1].transform.FindChild("TAHTA").transform.childCount > i)
+                    {
+                        _binaBolumleri[1].transform.FindChild("TAHTA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _binaBolumleri[1].transform.FindChild("CIMENTO").transform.childCount; i++)
+            {
+                if (_binaBolumleri[1].transform.FindChild("CIMENTO") != null)
+                {
+                    if (_binaBolumleri[1].transform.FindChild("CIMENTO").transform.childCount > i)
+                    {
+                        _binaBolumleri[1].transform.FindChild("CIMENTO").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _binaBolumleri[1].transform.FindChild("TUGLA").transform.childCount; i++)
+            {
+                if (_binaBolumleri[1].transform.FindChild("TUGLA") != null)
+                {
+                    if (_binaBolumleri[1].transform.FindChild("TUGLA").transform.childCount > i)
+                    {
+                        _binaBolumleri[1].transform.FindChild("TUGLA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+        }
+        else if (_zeminTamam == 1 && _duvar1Tamam == 0)
+        {
+            _duvar1 = false;
+
+            for (int i = 0; i < _tahtaCount; i++)
+            {
+                if (_binaBolumleri[1].transform.FindChild("TAHTA") != null)
+                {
+                    if (_binaBolumleri[1].transform.FindChild("TAHTA").transform.childCount > i)
+                    {
+                        _binaBolumleri[1].transform.FindChild("TAHTA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _cimentoCount; i++)
+            {
+                if (_binaBolumleri[1].transform.FindChild("CIMENTO") != null)
+                {
+                    if (_binaBolumleri[1].transform.FindChild("CIMENTO").transform.childCount > i)
+                    {
+                        _binaBolumleri[1].transform.FindChild("CIMENTO").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _tuglaCount; i++)
+            {
+                if (_binaBolumleri[1].transform.FindChild("TUGLA") != null)
+                {
+                    if (_binaBolumleri[1].transform.FindChild("TUGLA").transform.childCount > i)
+                    {
+                        _binaBolumleri[1].transform.FindChild("TUGLA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+        }
+
+
+        if (_duvar2Tamam == 1)
+        {
+            _duvar2 = true;
+
+            for (int i = 0; i < _binaBolumleri[2].transform.FindChild("TAHTA").transform.childCount; i++)
+            {
+                if (_binaBolumleri[2].transform.FindChild("TAHTA") != null)
+                {
+                    if (_binaBolumleri[2].transform.FindChild("TAHTA").transform.childCount > i)
+                    {
+                        _binaBolumleri[2].transform.FindChild("TAHTA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _binaBolumleri[2].transform.FindChild("CIMENTO").transform.childCount; i++)
+            {
+                if (_binaBolumleri[2].transform.FindChild("CIMENTO") != null)
+                {
+                    if (_binaBolumleri[2].transform.FindChild("CIMENTO").transform.childCount > i)
+                    {
+                        _binaBolumleri[2].transform.FindChild("CIMENTO").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _binaBolumleri[2].transform.FindChild("TUGLA").transform.childCount; i++)
+            {
+                if (_binaBolumleri[2].transform.FindChild("TUGLA") != null)
+                {
+                    if (_binaBolumleri[2].transform.FindChild("TUGLA").transform.childCount > i)
+                    {
+                        _binaBolumleri[2].transform.FindChild("TUGLA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+        }
+        else if (_duvar1Tamam == 1 && _duvar2Tamam == 0)
+        {
+            _duvar2 = false;
+
+            for (int i = 0; i < _tahtaCount; i++)
+            {
+                if (_binaBolumleri[2].transform.FindChild("TAHTA") != null)
+                {
+                    if (_binaBolumleri[2].transform.FindChild("TAHTA").transform.childCount > i)
+                    {
+                        _binaBolumleri[2].transform.FindChild("TAHTA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _cimentoCount; i++)
+            {
+                if (_binaBolumleri[2].transform.FindChild("CIMENTO") != null)
+                {
+                    if (_binaBolumleri[2].transform.FindChild("CIMENTO").transform.childCount > i)
+                    {
+                        _binaBolumleri[2].transform.FindChild("CIMENTO").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _tuglaCount; i++)
+            {
+                if (_binaBolumleri[2].transform.FindChild("TUGLA") != null)
+                {
+                    if (_binaBolumleri[2].transform.FindChild("TUGLA").transform.childCount > i)
+                    {
+                        _binaBolumleri[2].transform.FindChild("TUGLA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+        }
+
+
+        if (_duvar3Tamam == 1)
+        {
+            _duvar3 = true;
+
+            for (int i = 0; i < _binaBolumleri[3].transform.FindChild("TAHTA").transform.childCount; i++)
+            {
+                if (_binaBolumleri[3].transform.FindChild("TAHTA") != null)
+                {
+                    if (_binaBolumleri[3].transform.FindChild("TAHTA").transform.childCount > i)
+                    {
+                        _binaBolumleri[3].transform.FindChild("TAHTA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _binaBolumleri[3].transform.FindChild("CIMENTO").transform.childCount; i++)
+            {
+                if (_binaBolumleri[3].transform.FindChild("CIMENTO") != null)
+                {
+                    if (_binaBolumleri[3].transform.FindChild("CIMENTO").transform.childCount > i)
+                    {
+                        _binaBolumleri[3].transform.FindChild("CIMENTO").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _binaBolumleri[3].transform.FindChild("TUGLA").transform.childCount; i++)
+            {
+                if (_binaBolumleri[3].transform.FindChild("TUGLA") != null)
+                {
+                    if (_binaBolumleri[3].transform.FindChild("TUGLA").transform.childCount > i)
+                    {
+                        _binaBolumleri[3].transform.FindChild("TUGLA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+        }
+        else if (_duvar2Tamam == 1 && _duvar3Tamam == 0)
+        {
+            _duvar3 = false;
+
+            for (int i = 0; i < _tahtaCount; i++)
+            {
+                if (_binaBolumleri[3].transform.FindChild("TAHTA") != null)
+                {
+                    if (_binaBolumleri[3].transform.FindChild("TAHTA").transform.childCount > i)
+                    {
+                        _binaBolumleri[3].transform.FindChild("TAHTA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _cimentoCount; i++)
+            {
+                if (_binaBolumleri[3].transform.FindChild("CIMENTO") != null)
+                {
+                    if (_binaBolumleri[3].transform.FindChild("CIMENTO").transform.childCount > i)
+                    {
+                        _binaBolumleri[3].transform.FindChild("CIMENTO").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _tuglaCount; i++)
+            {
+                if (_binaBolumleri[3].transform.FindChild("TUGLA") != null)
+                {
+                    if (_binaBolumleri[3].transform.FindChild("TUGLA").transform.childCount > i)
+                    {
+                        _binaBolumleri[3].transform.FindChild("TUGLA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+        }
+
+
+        if (_duvar4Tamam == 1)
+        {
+            _duvar4 = true;
+
+            for (int i = 0; i < _binaBolumleri[4].transform.FindChild("TAHTA").transform.childCount; i++)
+            {
+                if (_binaBolumleri[4].transform.FindChild("TAHTA") != null)
+                {
+                    if (_binaBolumleri[4].transform.FindChild("TAHTA").transform.childCount > i)
+                    {
+                        _binaBolumleri[4].transform.FindChild("TAHTA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _binaBolumleri[4].transform.FindChild("CIMENTO").transform.childCount; i++)
+            {
+                if (_binaBolumleri[4].transform.FindChild("CIMENTO") != null)
+                {
+                    if (_binaBolumleri[4].transform.FindChild("CIMENTO").transform.childCount > i)
+                    {
+                        _binaBolumleri[4].transform.FindChild("CIMENTO").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _binaBolumleri[4].transform.FindChild("TUGLA").transform.childCount; i++)
+            {
+                if (_binaBolumleri[4].transform.FindChild("TUGLA") != null)
+                {
+                    if (_binaBolumleri[4].transform.FindChild("TUGLA").transform.childCount > i)
+                    {
+                        _binaBolumleri[4].transform.FindChild("TUGLA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+        }
+        else if (_duvar3Tamam == 1 && _duvar4Tamam == 0)
+        {
+            _duvar4 = false;
+
+            for (int i = 0; i < _tahtaCount; i++)
+            {
+                if (_binaBolumleri[4].transform.FindChild("TAHTA") != null)
+                {
+                    if (_binaBolumleri[4].transform.FindChild("TAHTA").transform.childCount > i)
+                    {
+                        _binaBolumleri[4].transform.FindChild("TAHTA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _cimentoCount; i++)
+            {
+                if (_binaBolumleri[4].transform.FindChild("CIMENTO") != null)
+                {
+                    if (_binaBolumleri[4].transform.FindChild("CIMENTO").transform.childCount > i)
+                    {
+                        _binaBolumleri[4].transform.FindChild("CIMENTO").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _tuglaCount; i++)
+            {
+                if (_binaBolumleri[4].transform.FindChild("TUGLA") != null)
+                {
+                    if (_binaBolumleri[4].transform.FindChild("TUGLA").transform.childCount > i)
+                    {
+                        _binaBolumleri[4].transform.FindChild("TUGLA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+        }
+
+
+        if (_duvar5Tamam == 1)
+        {
+            _duvar5 = true;
+            OpenDuvarAnim();
+        }
+        else if (_duvar4Tamam == 1 && _duvar5Tamam == 0)
+        {
+            _duvar5 = false;
+
+            for (int i = 0; i < _tahtaCount; i++)
+            {
+                if (_binaBolumleri[5].transform.FindChild("TAHTA") != null)
+                {
+                    if (_binaBolumleri[5].transform.FindChild("TAHTA").transform.childCount > i)
+                    {
+                        _binaBolumleri[5].transform.FindChild("TAHTA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _cimentoCount; i++)
+            {
+                if (_binaBolumleri[5].transform.FindChild("CIMENTO") != null)
+                {
+                    if (_binaBolumleri[5].transform.FindChild("CIMENTO").transform.childCount > i)
+                    {
+                        _binaBolumleri[5].transform.FindChild("CIMENTO").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _tuglaCount; i++)
+            {
+                if (_binaBolumleri[5].transform.FindChild("TUGLA") != null)
+                {
+                    if (_binaBolumleri[5].transform.FindChild("TUGLA").transform.childCount > i)
+                    {
+                        _binaBolumleri[5].transform.FindChild("TUGLA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+        }
+
+
+        if (_cati1Tamam == 1)
+        {
+            _cati1 = true;
+
+            for (int i = 0; i < _binaBolumleri[6].transform.FindChild("TAHTA").transform.childCount; i++)
+            {
+                if (_binaBolumleri[6].transform.FindChild("TAHTA") != null)
+                {
+                    if (_binaBolumleri[6].transform.FindChild("TAHTA").transform.childCount > i)
+                    {
+                        _binaBolumleri[6].transform.FindChild("TAHTA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+            /*
+            for (int i = 0; i < _cimentoCount; i++)
+            {
+                if (_binaBolumleri[6].transform.FindChild("CIMENTO") != null)
+                {
+                    if (_binaBolumleri[6].transform.FindChild("CIMENTO").transform.childCount > i)
+                    {
+                        _binaBolumleri[6].transform.FindChild("CIMENTO").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            */
+
+            for (int i = 0; i < _binaBolumleri[6].transform.FindChild("TUGLA").transform.childCount; i++)
+            {
+                if (_binaBolumleri[6].transform.FindChild("TUGLA") != null)
+                {
+                    if (_binaBolumleri[6].transform.FindChild("TUGLA").transform.childCount > i)
+                    {
+                        _binaBolumleri[6].transform.FindChild("TUGLA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+        }
+        else if (_duvar5Tamam == 1 && _cati1Tamam == 0)
+        {
+            _cati1 = false;
+
+            for (int i = 0; i < _tahtaCount; i++)
+            {
+                if (_binaBolumleri[6].transform.FindChild("TAHTA") != null)
+                {
+                    if (_binaBolumleri[6].transform.FindChild("TAHTA").transform.childCount > i)
+                    {
+                        _binaBolumleri[6].transform.FindChild("TAHTA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _cimentoCount; i++)
+            {
+                if (_binaBolumleri[6].transform.FindChild("CIMENTO") != null)
+                {
+                    if (_binaBolumleri[6].transform.FindChild("CIMENTO").transform.childCount > i)
+                    {
+                        _binaBolumleri[6].transform.FindChild("CIMENTO").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _tuglaCount; i++)
+            {
+                if (_binaBolumleri[6].transform.FindChild("TUGLA") != null)
+                {
+                    if (_binaBolumleri[6].transform.FindChild("TUGLA").transform.childCount > i)
+                    {
+                        _binaBolumleri[6].transform.FindChild("TUGLA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+        }
+
+
+
+        if (_cati2Tamam == 1)
+        {
+            _cati2 = true;
+            _binaBitti = true;
+            FinishHouse();
+        }
+        else if (_cati1Tamam == 1 && _cati2Tamam == 0)
+        {
+            _cati2 = false;
+
+            for (int i = 0; i < _tahtaCount; i++)
+            {
+                if (_binaBolumleri[7].transform.FindChild("TAHTA") != null)
+                {
+                    if (_binaBolumleri[7].transform.FindChild("TAHTA").transform.childCount > i)
+                    {
+                        _binaBolumleri[7].transform.FindChild("TAHTA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _cimentoCount; i++)
+            {
+                if (_binaBolumleri[7].transform.FindChild("CIMENTO") != null)
+                {
+                    if (_binaBolumleri[7].transform.FindChild("CIMENTO").transform.childCount > i)
+                    {
+                        _binaBolumleri[7].transform.FindChild("CIMENTO").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
+            for (int i = 0; i < _tuglaCount; i++)
+            {
+                if (_binaBolumleri[7].transform.FindChild("TUGLA") != null)
+                {
+                    if (_binaBolumleri[7].transform.FindChild("TUGLA").transform.childCount > i)
+                    {
+                        _binaBolumleri[7].transform.FindChild("TUGLA").transform.GetChild(i).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+        }
+
+
+        //fonc ending
+
     }
 
     private void OpenZeminAnim()
@@ -332,19 +1722,54 @@ public class House : MonoBehaviour
         roofCount = PlayerPrefs.GetInt("CatiDeger");
         */
 
-        CheckObjects();
+        //CheckObjects();
 
         _zemin = false;
-
+        _duvar1 = false;
+        _duvar2 = false;
+        _duvar3 = false;
+        _duvar4 = false;
+        _duvar5 = false;
+        _cati1 = false;
+        _cati2 = false;
 
         _binaBitti = false;
 
-        _tahtaCount = 0;
-        _cimentoCount = 0;
-        _tuglaCount = 0;
+        _zeminTamam = PlayerPrefs.GetInt("ZeminTamam");
+        _duvar1Tamam = PlayerPrefs.GetInt("Duvar1Tamam");
+        _duvar2Tamam = PlayerPrefs.GetInt("Duvar2Tamam");
+        _duvar3Tamam = PlayerPrefs.GetInt("Duvar3Tamam");
+        _duvar4Tamam = PlayerPrefs.GetInt("Duvar4Tamam");
+        _duvar5Tamam = PlayerPrefs.GetInt("Duvar5Tamam");
+        _cati1Tamam = PlayerPrefs.GetInt("Cati1Tamam");
+        _cati2Tamam = PlayerPrefs.GetInt("Cati2Tamam");
+
+        _tahtaCount = PlayerPrefs.GetInt("TahtaCount");
+        _cimentoCount = PlayerPrefs.GetInt("CimentoCount");
+        _tuglaCount = PlayerPrefs.GetInt("TuglaCount");
+
+
+        SavingSystem();
 
         //HouseKonum();
 
+    }
+
+    public void SavingSifirla()
+    {
+        PlayerPrefs.SetInt("ZeminTamam", 0);
+        PlayerPrefs.SetInt("Duvar1Tamam", 0);
+        PlayerPrefs.SetInt("Duvar2Tamam", 0);
+        PlayerPrefs.SetInt("Duvar3Tamam", 0);
+        PlayerPrefs.SetInt("Duvar4Tamam", 0);
+        PlayerPrefs.SetInt("Duvar5Tamam", 0);
+        PlayerPrefs.SetInt("Cati1Tamam", 0);
+        PlayerPrefs.SetInt("Cati2Tamam", 0);
+
+
+        PlayerPrefs.SetInt("TahtaCount", 0);
+        PlayerPrefs.SetInt("CimentoCount", 0);
+        PlayerPrefs.SetInt("TuglaCount", 0);
     }
 
     public void HouseKonum()

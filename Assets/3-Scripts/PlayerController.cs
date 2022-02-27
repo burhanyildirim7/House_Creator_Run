@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public bool xVarMi = true;
     public bool collectibleVarMi = true;
 
+    private int _binaSayac;
+
 
     private Animator animator;
     private void Awake()
@@ -106,6 +108,16 @@ public class PlayerController : MonoBehaviour
         GameController.instance.score = 0;
         transform.position = new Vector3(0, transform.position.y, 0);
         GetComponent<Collider>().enabled = true;
+
+        if (House.instance._binaBitti == true)
+        {
+            HouseController.instance.OpenHouse(0);
+            House.instance.SavingSifirla();
+        }
+        else
+        {
+
+        }
 
         Invoke("HouseKonum", 0.1f);
 
