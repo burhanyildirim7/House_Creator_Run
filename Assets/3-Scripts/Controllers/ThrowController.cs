@@ -47,7 +47,7 @@ public class ThrowController : MonoBehaviour
         }
         */
 
-        if (House.instance.roofCount != House.instance.roofCountLimit)
+        if (House.instance._binaBitti == false)
         {
             yield return new WaitForSeconds(0.5f);
 
@@ -58,8 +58,8 @@ public class ThrowController : MonoBehaviour
 
             for (int i = listeuzunlugu; i >= 0; i--)
             {
-                Debug.Log("AMINA KOYAM GAME MANAGER" + listeuzunlugu);
-                if (House.instance.roofCount != House.instance.roofCountLimit)
+                //Debug.Log("aaaaa" + listeuzunlugu);
+                if (House.instance._binaBitti == false)
                 {
                     yield return new WaitForSeconds(0.25f);
 
@@ -77,7 +77,7 @@ public class ThrowController : MonoBehaviour
 
             }
 
-            if (House.instance.roofCount != House.instance.roofCountLimit)
+            if (House.instance._binaBitti == false)
             {
                 yield return new WaitForSeconds(1f);
                 Debug.Log("Forun Altındaki İlk İfteyim");

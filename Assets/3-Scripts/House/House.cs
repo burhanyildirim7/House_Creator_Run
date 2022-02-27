@@ -14,18 +14,23 @@ public class House : MonoBehaviour
 
     public Animator zeminAnimator, duvarAnimator, catiAnimator, ekObjelerAnimator;
     public int groundCount, wallCount, roofCount;
-    public int _zeminTahtaCountLimit, _zeminCimentoCountLimit, _zeminTuglaCountLimit;
-    public int _govdeTahtaCountLimit, _govdeCimentoCountLimit, _govdeTuglaCountLimit;
-    public int _catiTahtaCountLimit, _catiCimentoCountLimit, _catiTuglaCountLimit;
+    //public int _zeminTahtaCountLimit, _zeminCimentoCountLimit, _zeminTuglaCountLimit;
+    //public int _govdeTahtaCountLimit, _govdeCimentoCountLimit, _govdeTuglaCountLimit;
+    //public int _catiTahtaCountLimit, _catiCimentoCountLimit, _catiTuglaCountLimit;
 
     [SerializeField] private ParticleSystem _tozEfekti;
 
-    private int _tahtaCount, _cimentoCount, tuglaCount;
+    private int _tahtaCount, _cimentoCount, _tuglaCount;
 
     public int roofCountLimit;
 
-    [SerializeField] private List<GameObject> _zeminTahtalar;
-    [SerializeField] private List<GameObject> _zeminCimentolar;
+    [SerializeField] private List<GameObject> _binaBolumleri;
+
+    private bool _zemin, _duvar1, _duvar2, _duvar3, _duvar4, _duvar5, _cati1, _cati2;
+
+    public bool _binaBitti;
+
+
 
     void Awake()
     {
@@ -33,6 +38,7 @@ public class House : MonoBehaviour
 
     }
 
+    [Obsolete]
     private void Start()
     {
         StartingEvents();
@@ -47,28 +53,94 @@ public class House : MonoBehaviour
         */
     }
 
-
+    [Obsolete]
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Collectable")
         {
             _tozEfekti.Play();
 
+            SetScore();
 
             if (other.GetComponent<ParcalarScript>()._tahta)
             {
                 _tahtaCount++;
-                _zeminTahtalar[_tahtaCount - 1].SetActive(true);
+
+                if (_zemin == false)
+                {
+                    if (_binaBolumleri[0].transform.FindChild("TAHTA").transform.childCount > _tahtaCount - 1)
+                    {
+                        _binaBolumleri[0].transform.FindChild("TAHTA").transform.GetChild(_tahtaCount - 1).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else if (_duvar1 == false)
+                {
+                    if (_binaBolumleri[1].transform.FindChild("TAHTA").transform.childCount > _tahtaCount - 1)
+                    {
+                        _binaBolumleri[1].transform.FindChild("TAHTA").transform.GetChild(_tahtaCount - 1).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+
+
                 Debug.Log("Tahta Geldi");
             }
             else if (other.GetComponent<ParcalarScript>()._cimento)
             {
                 _cimentoCount++;
-                _zeminCimentolar[_cimentoCount - 1].SetActive(true);
+
+                if (_zemin == false)
+                {
+                    if (_binaBolumleri[0].transform.FindChild("CIMENTO").transform.childCount > _cimentoCount - 1)
+                    {
+                        _binaBolumleri[0].transform.FindChild("CIMENTO").transform.GetChild(_cimentoCount - 1).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else if (_duvar1 == false)
+                {
+                    if (_binaBolumleri[1].transform.FindChild("CIMENTO").transform.childCount > _cimentoCount - 1)
+                    {
+                        _binaBolumleri[1].transform.FindChild("CIMENTO").transform.GetChild(_cimentoCount - 1).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
+
+
                 Debug.Log("Cimento Geldi");
             }
             else if (other.GetComponent<ParcalarScript>()._tugla)
             {
+                _tuglaCount++;
+
+                if (_zemin == false)
+                {
+
+                }
+                else if (_duvar1 == false)
+                {
+                    if (_binaBolumleri[1].transform.FindChild("TUGLA").transform.childCount > _tuglaCount - 1)
+                    {
+                        _binaBolumleri[1].transform.FindChild("TUGLA").transform.GetChild(_tuglaCount - 1).gameObject.SetActive(true);
+                    }
+                    else
+                    {
+
+                    }
+                }
                 Debug.Log("Tugla Geldi");
             }
             else
@@ -135,8 +207,44 @@ public class House : MonoBehaviour
 
     }
 
+    [Obsolete]
     private void CheckObjects()
     {
+        if (_zemin == false)
+        {
+            if (_binaBolumleri[0].transform.FindChild("TAHTA").transform.childCount <= _tahtaCount - 1 && _binaBolumleri[0].transform.FindChild("CIMENTO").transform.childCount <= _cimentoCount - 1)
+            {
+                _zemin = true;
+                OpenZeminAnim();
+                _tahtaCount = 0;
+                _cimentoCount = 0;
+                _tuglaCount = 0;
+            }
+            else
+            {
+
+            }
+        }
+        else if (_duvar1 == false)
+        {
+            if (_binaBolumleri[1].transform.FindChild("TAHTA").transform.childCount <= _tahtaCount - 1 && _binaBolumleri[1].transform.FindChild("CIMENTO").transform.childCount <= _cimentoCount - 1 && _binaBolumleri[1].transform.FindChild("TUGLA").transform.childCount == _tuglaCount - 1)
+            {
+                _duvar1 = true;
+                // OpenZeminAnim();
+                _tahtaCount = 0;
+                _cimentoCount = 0;
+                _tuglaCount = 0;
+            }
+            else
+            {
+
+            }
+        }
+
+
+
+
+
         /*
         if (groundCount == groundCountLimit && groundCount != 0)
         {
@@ -210,6 +318,7 @@ public class House : MonoBehaviour
 
     }
 
+    [Obsolete]
     private void StartingEvents()
     {
         wallTextObject.SetActive(false);
@@ -224,6 +333,15 @@ public class House : MonoBehaviour
         */
 
         CheckObjects();
+
+        _zemin = false;
+
+
+        _binaBitti = false;
+
+        _tahtaCount = 0;
+        _cimentoCount = 0;
+        _tuglaCount = 0;
 
         //HouseKonum();
 
