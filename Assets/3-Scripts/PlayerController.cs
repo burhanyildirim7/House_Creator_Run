@@ -54,6 +54,10 @@ public class PlayerController : MonoBehaviour
 
             MoreMountains.NiceVibrations.MMVibrationManager.Haptic(MoreMountains.NiceVibrations.HapticTypes.MediumImpact);
 
+            TokezlemeAnim();
+
+            Invoke("WalkAnim", 0.5f);
+
             if (StackController.instance.StackObjectsList.Count <= 0 && !StackController.instance.triggerCheck) // SKOR SIFIRIN ALTINA DUSTUYSE - GameController.instance.score < 0
             {
                 // FAİL EVENTLERİ BURAYA YAZILACAK..
@@ -133,12 +137,23 @@ public class PlayerController : MonoBehaviour
 
     public void IdleAnim()
     {
-        animator.SetTrigger("idle");
+        animator.SetBool("tokezleme", false);
+        animator.SetBool("walk", false);
+        animator.SetBool("idle", true);
     }
 
     public void WalkAnim()
     {
-        animator.SetTrigger("walk");
+        animator.SetBool("idle", false);
+        animator.SetBool("tokezleme", false);
+        animator.SetBool("walk", true);
+    }
+
+    public void TokezlemeAnim()
+    {
+        animator.SetBool("idle", false);
+        animator.SetBool("walk", false);
+        animator.SetBool("tokezleme", true);
     }
 
 
