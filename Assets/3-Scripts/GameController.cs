@@ -7,20 +7,22 @@ public class GameController : MonoBehaviour
     public static GameController instance; // singleton yapisi icin gerekli ornek ayrintilar icin BeniOku 22. satirdan itibaren bak.
 
 
-    [HideInInspector]public int score, elmas; // ayrintilar icin benioku 9. satirdan itibaren bak
+    [HideInInspector] public int score, elmas; // ayrintilar icin benioku 9. satirdan itibaren bak
 
     [HideInInspector] public bool isContinue;  // ayrintilar icin beni oku 19. satirdan itibaren bak
 
+    public bool isFinish;
 
-	private void Awake()
-	{
+    private void Awake()
+    {
         if (instance == null) instance = this;
         //else Destroy(this);
-	}
+    }
 
-	void Start()
+    void Start()
     {
         isContinue = false;
+        isFinish = false;
     }
 
 
@@ -30,8 +32,8 @@ public class GameController : MonoBehaviour
     /// </summary>
     /// <param name="eklenecekScore">Her collectible da ne kadar score eklenip cikarilacaksa parametre olarak o sayi verilmeli</param>
     public void SetScore(int eklenecekScore)
-	{
-        if(PlayerController.instance.collectibleVarMi) score += eklenecekScore;
+    {
+        if (PlayerController.instance.collectibleVarMi) score += eklenecekScore;
         // E�er oyunda collectible yok ise developer kendi score sistemini yazmal�...
 
     }
@@ -47,7 +49,7 @@ public class GameController : MonoBehaviour
         elmas += eklenecekElmas;
         // buradaki elmas art�nca totalScore da otomatik olarak artacak.. bu sebeple asagidaki kodlar eklendi.
         PlayerPrefs.SetInt("totalElmas", PlayerPrefs.GetInt("totalElmas" + eklenecekElmas));
-       // UIController.instance.SetTotalElmasText(); // totalElmaslar�n yazili oldugu texti
+        // UIController.instance.SetTotalElmasText(); // totalElmaslar�n yazili oldugu texti
     }
 
 
@@ -56,14 +58,14 @@ public class GameController : MonoBehaviour
     /// </summary>
     /// <param name="katsayi"></param>
     public void ScoreCarp(int katsayi)
-	{
+    {
         if (PlayerController.instance.xVarMi) score *= katsayi;
         else score = 1 * score;
         PlayerPrefs.SetInt("totalScore", PlayerPrefs.GetInt("totalScore") + score);
     }
 
 
-        public void DestroyAllObject()
+    public void DestroyAllObject()
     {
 
         foreach (var item in GameObject.FindGameObjectsWithTag("Collectable"))

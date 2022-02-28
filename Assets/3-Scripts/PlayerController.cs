@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
             // FINISH NOKTASINA GELINCE YAPILACAKLAR... Totalscore artırma, x işlemleri, efektler v.s. v.s.
             //
             GameController.instance.isContinue = false;
+            GameController.instance.isFinish = true;
             IdleAnim();
             transform.DOMove(new Vector3(0, transform.position.y, transform.position.z), 0.5f).OnComplete(() =>
             {
@@ -118,6 +119,8 @@ public class PlayerController : MonoBehaviour
         {
 
         }
+
+        StackController.instance.SayiSifirla();
 
         Invoke("HouseKonum", 0.1f);
 

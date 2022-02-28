@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 using System;
 
@@ -13,10 +14,13 @@ public class StackController : MonoBehaviour
     [HideInInspector]
     public bool triggerCheck;
 
+    [SerializeField] private Text _tuglaText, _cimentoText, _tahtaText;
 
     [SerializeField] private ParticleSystem _tozEfekti;
 
     private Transform _collectPointTransform;
+
+    private int _tahtaSayisi, _cimentoSayisi, _tuglaSayisi;
 
     private void Awake()
     {
@@ -30,10 +34,30 @@ public class StackController : MonoBehaviour
         if (other.tag == "engel" && !triggerCheck)
         {
 
+            if (StackObjectsList[stackObjectsList.Count - 1].GetComponent<ParcalarScript>()._tahta)
+            {
+                _tahtaSayisi--;
+                _tahtaText.text = _tahtaSayisi.ToString();
+            }
+            else if (StackObjectsList[stackObjectsList.Count - 1].GetComponent<ParcalarScript>()._cimento)
+            {
+                _cimentoSayisi--;
+                _cimentoText.text = _cimentoSayisi.ToString();
+            }
+            else if (StackObjectsList[stackObjectsList.Count - 1].GetComponent<ParcalarScript>()._tugla)
+            {
+                _tuglaSayisi--;
+                _tuglaText.text = _tuglaSayisi.ToString();
+            }
+            else
+            {
 
+            }
 
             if (stackObjectsList.Count > 0)
                 DropObjectMethod(stackObjectsList[stackObjectsList.Count - 1], other);
+
+
 
             triggerCheck = true;
         }
@@ -47,13 +71,19 @@ public class StackController : MonoBehaviour
 
     }
 
-    private void Update()
+
+
+
+    public void SayiSifirla()
     {
+        _tahtaSayisi = 0;
+        _cimentoSayisi = 0;
+        _tuglaSayisi = 0;
 
+        _tahtaText.text = _tahtaSayisi.ToString();
+        _cimentoText.text = _cimentoSayisi.ToString();
+        _tuglaText.text = _tuglaSayisi.ToString();
     }
-
-
-
 
     void OnTriggerExit(Collider other)
     {
@@ -65,6 +95,26 @@ public class StackController : MonoBehaviour
 
     public void StackObjectMethod(GameObject baseObject)
     {
+
+        if (baseObject.GetComponent<ParcalarScript>()._tahta)
+        {
+            _tahtaSayisi++;
+            _tahtaText.text = _tahtaSayisi.ToString();
+        }
+        else if (baseObject.GetComponent<ParcalarScript>()._cimento)
+        {
+            _cimentoSayisi++;
+            _cimentoText.text = _cimentoSayisi.ToString();
+        }
+        else if (baseObject.GetComponent<ParcalarScript>()._tugla)
+        {
+            _tuglaSayisi++;
+            _tuglaText.text = _tuglaSayisi.ToString();
+        }
+        else
+        {
+
+        }
 
         if (stackObjectsList.Count % 2 == 0 || stackObjectsList.Count == 0)
         {

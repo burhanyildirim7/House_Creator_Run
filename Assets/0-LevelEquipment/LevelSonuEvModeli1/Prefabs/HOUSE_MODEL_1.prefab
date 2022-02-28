@@ -35575,19 +35575,13 @@ MonoBehaviour:
   catiAnim: {fileID: 1181049665034001758}
   ekObjeler: {fileID: 1181049665978727409}
   animasyonObject: {fileID: 7203620025236275578}
-  groundTextObject: {fileID: 8812172818019920143}
-  wallTextObject: {fileID: 6867468958898415757}
-  roofTextObject: {fileID: 4989398760904625097}
-  groundText: {fileID: 1969587425587616841}
-  wallText: {fileID: 8159145524574971692}
-  roofText: {fileID: 2969599353966346570}
+  _tahtaText: {fileID: 1087434257296218587}
+  _cimentoText: {fileID: 467026313088441091}
+  _tuglaText: {fileID: 735506587042199590}
   zeminAnimator: {fileID: 1181049665590202200}
   duvarAnimator: {fileID: 1181049665903990392}
   catiAnimator: {fileID: 1181049665034001752}
   ekObjelerAnimator: {fileID: 1181049664401934675}
-  groundCount: 0
-  wallCount: 0
-  roofCount: 0
   _tozEfekti: {fileID: 4633863283097907072}
   roofCountLimit: 20
   _binaBolumleri:
@@ -50543,7 +50537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8366167197731937119
 Transform:
   m_ObjectHideFlags: 0
