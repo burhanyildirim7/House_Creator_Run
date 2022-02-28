@@ -617,6 +617,7 @@ MonoBehaviour:
   score: 0
   elmas: 0
   isContinue: 0
+  isFinish: 0
 --- !u!4 &1124119774
 Transform:
   m_ObjectHideFlags: 0
@@ -864,8 +865,8 @@ MonoBehaviour:
   tempLevelNo: 0
   totalLevelNo: 0
   levels:
-  - {fileID: 5801267856236948418, guid: 947ee90ae61173d478f461ce6d95c8d7, type: 3}
-  - {fileID: 5801267856236948418, guid: 947ee90ae61173d478f461ce6d95c8d7, type: 3}
+  - {fileID: 2456168294874700680, guid: 550eafea593a4b54dac6c821b081b0d4, type: 3}
+  - {fileID: 7096889343200402372, guid: 88983ecde4f6c2d4d9921c662500948c, type: 3}
   - {fileID: 5801267856236948418, guid: 947ee90ae61173d478f461ce6d95c8d7, type: 3}
 --- !u!1 &664173345876672193
 GameObject:
